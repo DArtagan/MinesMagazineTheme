@@ -1,0 +1,97 @@
+/*
+Theme Name: Custom Branford Implementation
+Description: A Child Theme of the PRiNZ BranfordMagazie Pro theme
+Template: PRiNZ_BranfordMagazine_pro/branfordmagazine-pro
+*/
+
+div.issue-images img {
+	width: 100px;
+	height: 127px;
+	padding: 1px;
+	border: 1px solid #999999;
+	margin: 5px 5px 10px;
+}
+
+div.issue-images ul {
+	list-style-type: none;
+}
+
+div.issue-images li {
+	display: inline;
+	float: left;
+	padding: 0px;
+	margin: 0px;
+}
+
+div.issue-images a div {
+	text-decoration: underline;
+	text-align: center;
+	padding: 0px;
+	margin-top: -10px;
+	margin-bottom: 20px;
+}
+
+div.issue-images a div:hover {
+	text-decoration: none;
+}
+
+div.clear {
+	clear: both;
+}
+
+img#search_results_activity_indicator {
+	border: none;
+}
+
+ul.search_results {
+	position: absolute;
+	background: #ffffff;
+	border: 2px solid #666666;
+	padding: 10px;
+	width: 350px;
+}
+
+ul.search_results li {
+	text-indent: -20px;
+	padding-left: 20px;
+	padding-bottom: 2px;
+}
+
+ul.search_results div.search_footer {
+	margin-top: 10px;
+	border-top: 1px solid #999999;
+	padding-top: 5px;
+}
+
+div#rightcol a.title {
+	text-align: left;
+}
+
+#rightcol {
+text-align: left;
+}
+
+#sidelist li.feed {
+	margin-bottom:5px;
+	padding-left:20px;
+	background:url(images/rss.gif) no-repeat;
+}
+
+#sidelist li.podcast {
+	margin-bottom:5px;
+	padding-left:20px;
+	background:url(images/podcast.jpg) no-repeat;
+}
+
+span.read-on {
+	display: none;
+}
+
+body.search-results div#content {
+	width: 70%;
+	margin: 15px 15%;
+}
+
+body.search-results div#content div#adBlock {
+	background: #dddddd;
+}
