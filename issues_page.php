@@ -23,12 +23,14 @@ Template Name: Recent Issues
 				<?php 
 					$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
 					$issues=  get_categories($arg);
+                                        $issueCount = 0;
 					foreach($issues as $issue) {
             $thePost = get_posts(array('category__and' => array($issue->term_id, 200)));
-            
+            $issueCount++;
             //var_dump($issue);
             //$leadPost = query_posts(array('category__and' => array($issue->term_id,200)));
             //$issueImage = get_the_post_thumbnail( $post_id, 'thumbnail', $attr );
+                                                if($issueCount == 5) echo '<li style="height: 163px; width: 100px;">&nbsp;</li>';
 						echo '<li><a href="http://minesmagazine.com/?cat=' . $issue->cat_ID . '">' . get_the_post_thumbnail($thePost[0]->ID) . '<div>' . $issue->cat_name . '</div></a></li>'; 
 					} 
 				?>
