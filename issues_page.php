@@ -17,7 +17,7 @@ Template Name: Recent Issues
         </ul>
       </div>
     
-			<div class="issue-images" style="padding-top: 15px;">
+			<div class="issue-images">
 				<p style="padding-bottom: 5px;">Issues from the new website:</p>
 				<ul>
 				<?php 
