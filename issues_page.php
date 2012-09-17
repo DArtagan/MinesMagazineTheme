@@ -36,18 +36,13 @@ Template Name: Recent Issues
 				?>
         <?php
         // Load XML file of external mines magazines
-          if (file_exists('archive.xml')) {
-            $xml = simplexml_load_file('test.xml');
+          if (file_exists(STYLESHEETPATH."/archives.xml")) {
+            $xml = simplexml_load_file(STYLESHEETPATH."/archives.xml");
            
             foreach ($xml->issue as $issue) {
-              echo $issue->name, ' played by ', $character->actor, PHP_EOL;
               echo '<li><a href="' . $issue->link . '"><img alt="' . $issue->img_alt . '" src="' . $issue->img_src . '"><div>' . $issue->name . '</div></a></li>'; 
             }
-          } else {
-              exit('Failed to open test.xml.');
           }
-?>
-
         ?>
 				</ul>
 			</div>
