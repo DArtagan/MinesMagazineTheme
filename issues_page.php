@@ -34,6 +34,21 @@ Template Name: Recent Issues
 						echo '<li><a href="http://minesmagazine.com/?cat=' . $issue->cat_ID . '">' . get_the_post_thumbnail($thePost[0]->ID) . '<div>' . $issue->cat_name . '</div></a></li>'; 
 					} 
 				?>
+        <?php
+        // Load XML file of external mines magazines
+          if (file_exists('archive.xml')) {
+            $xml = simplexml_load_file('test.xml');
+           
+            foreach ($xml->issue as $issue) {
+              echo $issue->name, ' played by ', $character->actor, PHP_EOL;
+              echo '<li><a href="' . $issue->link . '"><img alt="' . $issue->img_alt . '" src="' . $issue->img_src . '"><div>' . $issue->name . '</div></a></li>'; 
+            }
+          } else {
+              exit('Failed to open test.xml.');
+          }
+?>
+
+        ?>
 				</ul>
 			</div>
 			

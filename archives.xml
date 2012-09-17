@@ -1,0 +1,75 @@
+<?xml version="1.0"?>
+<archive>
+	<issue>
+		<name>Summer 2010</name>
+		<link>http://magazine.mines.edu/2010/Summer/homepagetobe.html</link>
+		<img_src>http://magazine.mines.edu/BackIssues/Images/v100.n2.jpg</img_src>
+		<img_alt>Summer 2010</img_alt>
+	</issue>
+	<issue>
+		<name>Spring 2010</name>
+		<link>http://magazine.mines.edu/2010/Spring/Homepage_Spring_2010.html</link>
+		<img_src>http://magazine.mines.edu/BackIssues/Images/SU10BackissueThumb.gif</img_src>
+		<img_alt>Spring 2010</img_alt>
+	</issue>
+	<issue>
+		<name>Winter 2009/2010</name>
+		<link>http://magazine.mines.edu/2009/Fall_Winter/Homepage_Fall-Winter.html</link>
+		<img_src>http://magazine.mines.edu/2009/Fall_Winter/Images/CoverFall09_100px.gif</img_src>
+		<img_alt>Winter 2009/2010</img_alt>
+	</issue>
+	<issue>
+		<name>Summer 2009</name>
+		<link>http://magazine.mines.edu/2009/Summer/Homepage_summer2009.html</link>
+		<img_src>http://magazine.mines.edu/BackIssues/Images/SU09BackissueThumb.gif</img_src>
+		<img_alt>Summer 2009</img_alt>
+	</issue>
+	<issue>
+		<name>Spring 2009</name>
+		<link>http://magazine.mines.edu/2009/Spring/Homepage_Spring.html</link>
+		<img_src>http://magazine.mines.edu/BackIssues/Images/SP09BackissueThumb.gif</img_src>
+		<img_alt>Spring 2009</img_alt>
+	</issue>
+	<issue>
+		<name>Winter 2008/2009</name>
+		<link>http://magazine.mines.edu/2008/Winter/Winter08-09_index.html</link>
+		<img_src>http://magazine.mines.edu/BackIssues/Images/W08-09BackissueThumb.gif</img_src>
+		<img_alt>Winter 2008/2009</img_alt>
+	</issue>
+	<issue>
+		<name>Fall 2008</name>
+		<link>http://magazine.mines.edu/2008/Fall/HomepageFall08.html</link>
+		<img_src>http://magazine.mines.edu/2008/Fall/Images/Fall08MinesCover100px.gif</img_src>
+		<img_alt>Fall 2008</img_alt>
+	</issue>
+	<issue>
+		<name>Summer 2008</name>
+		<link>http://magazine.mines.edu/2008/Summer/Summer2008Index.html</link>
+		<img_src>http://magazine.mines.edu/BackIssues/Images/SU08BackissueThumb.gif</img_src>
+		<img_alt>Summer 2008</img_alt>
+	</issue>
+	<issue>
+		<name>Spring 2008</name>
+		<link>http://magazine.mines.edu/2008/Spring/SP08index.html</link>
+		<img_src>http://magazine.mines.edu/BackIssues/Images/SP08BackissueThumb.gif</img_src>
+		<img_alt>Spring 2008</img_alt>
+	</issue>
+	<issue>
+		<name>Winter 2007/2008</name>
+		<link>http://magazine.mines.edu/2007/Winter/W08index.html</link>
+		<img_src>http://magazine.mines.edu/2007/Winter/Images/W07Cover.gif</img_src>
+		<img_alt>Winter 2007/2008</img_alt>
+	</issue>
+	<issue>
+		<name>Fall 2007</name>
+		<link>http://magazine.mines.edu/2007/Fall/Fall07_index.html</link>
+		<img_src>http://magazine.mines.edu/BackIssues/Images/F07BackissueThumb.gif</img_src>
+		<img_alt>Fall 2007</img_alt>
+	</issue>
+	<issue>
+		<name>Spring/Summer 2007</name>
+		<link>http://magazine.mines.edu/2007/Summer/Summer07_index.html</link>
+		<img_src>http://magazine.mines.edu/BackIssues/Images/SS07BackissueThumb.gif</img_src>
+		<img_alt>Spring/Summer 2007</img_alt>
+	</issue>
+</archive>
