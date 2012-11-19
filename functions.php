@@ -23,6 +23,30 @@ add_action('wp_head', 'childtheme_activate_stylesheet', 99);
 
 
 /**
+ * Display users as firstname lastname
+ */
+class myUsers {
+	static function init() {
+		// Change the user's display name after insertion
+		add_action( 'user_register', array( __CLASS__, 'change_display_name' ) );	
+	}
+	
+	static function change_display_name( $user_id ) {
+		$info = get_userdata( $user_id );
+		
+		$args = array(
+			'ID' => $user_id, 
+			'display_name' => $info->first_name . ' ' . $info->last_name 
+		);
+		
+		wp_update_user( $args ) ;
+	}
+}
+
+myUsers::init();
+
+
+/**
  * child-theme options activation
  */
 include(STYLESHEETPATH."/child_options.php");
