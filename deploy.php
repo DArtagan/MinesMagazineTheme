@@ -11,8 +11,11 @@
 $commands = array(
 'echo $PWD',
 'whoami',
-'git pull',
 'git status',
+'git add -A 2>&1',
+'git commit -m "MinesMagazine.com server based commits" 2>&1',
+'git pull origin master',
+'git push origin master',
 'git submodule sync',
 'git submodule update',
 'git submodule status',
