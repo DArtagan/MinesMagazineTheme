@@ -11,6 +11,7 @@
 $commands = array(
 'echo $PWD',
 'whoami',
+'ssh-agent bash',
 'git status',
 'git add -A 2>&1',
 'git commit -m "MinesMagazine.com server based commits" 2>&1',
