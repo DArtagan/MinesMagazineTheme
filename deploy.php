@@ -16,7 +16,6 @@ $commands = array(
 'git commit -m "MinesMagazine.com server based commits" 2>&1',
 'git pull origin master',
 'git push origin master',
-'ssh-agent (ssh-add /home/csmaa/.ssh/id_rsa; git push origin master)',
 'git submodule sync',
 'git submodule update',
 'git submodule status',
