@@ -42,7 +42,7 @@ for ($x = 0; $x < sizeof($display_categories); ++$x) {
       
       <?php next($display_categories); ?>
       <?php while ($homecats_query->have_posts()) : $homecats_query->the_post(); ?>
-      <h4><?php echo get_post_custom_values('descriptor'); ?></h4>
+      <h4><?php $descriptor = get_post_custom_values('descriptor'); echo $descriptor[0]; ?></h4>
 	  <?php // This will show the image and link the image to the post. ?>
       <?php postimage($prinz_catimage_width,$prinz_catimage_height); ?>
       <a href="<?php the_permalink() ?>" rel="bookmark" class="title">
