@@ -42,9 +42,9 @@ for ($x = 0; $x < sizeof($display_categories); ++$x) {
       
       <?php next($display_categories); ?>
       <?php while ($homecats_query->have_posts()) : $homecats_query->the_post(); ?>
-      <h4><?php $descriptor = get_post_custom_values('descriptor'); echo $descriptor[0]; ?></h4>
 	  <?php // This will show the image and link the image to the post. ?>
       <?php postimage($prinz_catimage_width,$prinz_catimage_height); ?>
+	  <h4><?php $descriptor = get_post_custom_values('descriptor'); echo $descriptor[0]; ?></h4>
       <a href="<?php the_permalink() ?>" rel="bookmark" class="title">
       <?php // this is where title of the article gets printed 
 	  the_title(); ?>
