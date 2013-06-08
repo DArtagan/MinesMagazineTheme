@@ -1,5 +1,5 @@
 <?php load_theme_textdomain('branfordmagazine'); ?>
-<?php include (TEMPLATEPATH.'/tools/get-theme-options.php'); 
+<?php //include (TEMPLATEPATH.'/tools/get-theme-options.php'); 
 //check for correct WP version	
 global $wp_version;
 if ( !version_compare( $wp_version, '3.0-beta', '>=' ) ) {
