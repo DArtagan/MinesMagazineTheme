@@ -4,7 +4,8 @@
 <div id="content">
   <?php
  // Include tabs with the lead story 
-	include(TEMPLATEPATH . '/includes/ui.tabs.php'); ?>
+	//include(TEMPLATEPATH . '/includes/ui.tabs.php'); ?>
+   if ( function_exists( 'get_wp_parallax_content_slider' ) ) { get_wp_parallax_content_slider(); } 
   <div id="leftcol">
     <?php 
 // "Featured articles" module begins	  
