@@ -4,6 +4,10 @@ Description: A Child Theme of the PRiNZ BranfordMagazie Pro theme
 Template: PRiNZ_BranfordMagazine_pro/branfordmagazine-pro
 */
 
+body.custom-background {
+	background-color: #0e1c52;
+}
+
 div.issue-images img {
 	width: 100px;
 	height: 127px;
