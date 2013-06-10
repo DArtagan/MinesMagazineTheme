@@ -4,8 +4,29 @@ Description: A Child Theme of the PRiNZ BranfordMagazie Pro theme
 Template: PRiNZ_BranfordMagazine_pro/branfordmagazine-pro
 */
 
-body.custom-background {
-	background-color: #0e1c52;
+body {
+	background-color: #0e1c52 !important;
+}
+
+div.prinz-menu-primary {
+	background-color: #333333;
+}
+
+div.prinz-menu-primary a {
+	color: #ffffff;
+}
+
+div.prinz-menu-primary li {
+	border-right: 1px solid #FFFFFF;
+}
+
+div.prinz-menu-primary li.current-menu-item {
+	background-color: #840000;
+}
+
+div#content img {
+	border: 1px solid #999999 !important;
+	padding: 1px !important;
 }
 
 div.issue-images img {

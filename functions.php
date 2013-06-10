@@ -16,8 +16,8 @@ function childtheme_create_stylesheet() {
 add_action('wp_head', 'childtheme_create_stylesheet');
 
 function childtheme_activate_stylesheet() {
-	$stylesheetdir = get_bloginfo('stylesheet_directory');
-	?><link rel="stylesheet" type="text/css" media="screen" href="<?php echo $stylesheetdir ?>/style.css" title="hello" /><?php
+	?><link rel="stylesheet" type="text/css" 
+  href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" /><?php
 }
 add_action('wp_head', 'childtheme_activate_stylesheet', 99);
 
@@ -89,8 +89,8 @@ class widget_wp_flash_img_show extends WP_Widget {
 		}
 		?>
 		<p>
-			<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
-			<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
+		<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
 		</p>
 		<?php 
 	}
