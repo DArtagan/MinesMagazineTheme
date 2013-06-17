@@ -24,9 +24,27 @@ div.prinz-menu-primary li.current-menu-item {
 	background-color: #840000;
 }
 
+div#slider {
+	width: 65%;
+}
+
+div#content {
+	float: none;
+	width: 100%;
+}
+
 div#content img {
 	border: 1px solid #999999 !important;
 	padding: 1px !important;
+}
+
+div#leftcol {
+
+}
+
+div#rightcol {
+	column-count: 2;
+	-moz-column-count: 2;
 }
 
 div.issue-images img {
