@@ -15,27 +15,11 @@ function childtheme_create_stylesheet() {
 }
 add_action('wp_head', 'childtheme_create_stylesheet');
 
-function MinesMagazine_styles()  
-{ 
-  // Register the style like this for a theme:  
-  // (First the unique name for the style (custom-style) then the src, 
-  // then dependencies and ver no. and media type)
-  wp_register_style( 'MinesMagazine-style', 
-    get_bloginfo('stylesheet_directory') . '/style.css', 
-    array(),
-    '1',
-    'all' );
-
-  // enqueing:
-  wp_enqueue_style( 'MinesMagazine-style' );
-}
-add_action('wp_enqueue_scripts', 'MinesMagazine_styles');
-
 function childtheme_activate_stylesheet() {
-	$stylesheetdir = get_bloginfo('stylesheet_directory');
-	?><link rel="stylesheet" type="text/css" media="screen" href="<?php echo $stylesheetdir ?>/style.css" /><?php
+	?><link rel="stylesheet" type="text/css" 
+  href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" /><?php
 }
-add_action('wp_', 'childtheme_activate_stylesheet', 99);
+add_action('wp_head', 'childtheme_activate_stylesheet', 99);
 
 
 /**
