@@ -37,8 +37,17 @@ $meta_boxes[] = array(
 			'desc'  => __( 'Optional, intended for Inside Mines articles.  If provided, the subject area will display instead of the department heading.', 'rwmb' ),
 			'type'  => 'text',
 			// Default value (optional)
-			'std'   => __( 'Default text value', 'rwmb' ),
+			//'std'   => __( 'Default text value', 'rwmb' ),
 			// CLONES: Add to make the field cloneable (i.e. have multiple value)
+		),
+		// NUMBER
+		array(
+			'name' => __( 'Order', 'rwmb' ),
+			'id'   => "{$prefix}number",
+			'type' => 'number',
+			'desc' => 'Numeric order on the homepage (lower number means higher priority).',
+			'min'  => 0,
+			'step' => 5,
 		),
 	)
 );

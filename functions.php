@@ -326,6 +326,6 @@ add_theme_support( 'post-thumbnails' );
  * Custom Metabox
  */
 include('includes/homepageOrder.php');
-include('includes/demo.php');
+//include('includes/demo.php');
 
 ?>
