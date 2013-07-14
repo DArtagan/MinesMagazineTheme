@@ -40,11 +40,11 @@
     <?php wp_reset_query(); ?>
   </div>
   <!--END LEFTCOL-->
+  <div class="rightcon">
   <?php
   $display_categories = explode(",",prinz_get_option('prinz_homecats'));
   for ($x = 0; $x < sizeof($display_categories); ++$x) {
   ?>
-    <div class="rightcon">
       <?php $homecats_query = new WP_Query('showposts='.prinz_get_option('prinz_homecatsnumber').'&cat='.current($display_categories)); ?>
       <?php // Name and link of each category headline gets printed	?>
       <?php next($display_categories); ?>
