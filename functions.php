@@ -231,7 +231,16 @@ add_action( 'widgets_init', create_function( '', 'return register_widget("limite
 	function CurrentIssue()  {
 		$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
 		$issues=  get_categories($arg);
-		echo $issues[0]->cat_name;
+		$issues[0]->cat_name;
+	}
+
+/**
+ * Get name of most recent issue
+ */
+	function CurrentIssueID()  {
+		$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
+		$issues=  get_categories($arg);
+		$issues[0]->cat_ID;
 	}
 	
 /**
@@ -263,6 +272,28 @@ add_action( 'widgets_init', create_function( '', 'return register_widget("limite
 	}
 add_action('template_redirect', 'IssuesTemplate', 1);
 
+/**
+ * Loop for archives
+ */
+	function MM_HomepageLoop($verbose) {
+		if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
+			<div class="<?php echo ($x <= sizeof($display_categories)/2 ? 'centercol' : 'rightcol'); ?>">
+	          <h4>
+	            <?php wp_list_categories("include=".current($display_categories).";&title_li=&style=none"); ?>
+	          </h4>
+	          <h3><a href="<?php the_permalink() ?>" rel="bookmark" class="title">
+	            <?php the_title(); ?>
+	          </a></h3>
+	          <h4>By <?php the_author(); ?></h4>
+	          <?php if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) { // this is the default WordPress post thumbnail function
+	    		    the_post_thumbnail(('rightcol-image'), array('class' =>  "alignleft"));
+	    			} ?>
+	          <?php the_excerpt() ; ?>
+	        </div>
+			<?php endwhile; ?>
+			<?php endif;
+			wp_reset_query();
+	}
 
 /**
  * Loop for archives

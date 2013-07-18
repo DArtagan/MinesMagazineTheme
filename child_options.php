@@ -3,15 +3,21 @@
  * Options page for the theme
  */
 // the name of the theme
-$childname = "Child-Theme";
+$childname = "Mines Magazine Custom";
 // an abbreviation of the theme's name
-$childshortname = "bmct";
+$childshortname = "MM";
 
 $childoptions = array (
 	array ( "name" => "Welcome Message",
 			"type" => "title"),
 
 	array ( "type" => "open"),
+
+    array ( "name" => "Homepage Categories",
+            "desc" => "Comma seperated list of category IDs to be excluded from the homepage.",
+            "id" => $childshortname . "_exHomepageCats",
+            "type" => "text",
+            "std" => __("") ),
 
 	array (	"name" => "Archive's Department Order",
 			"desc" => "Comma seperated list of category IDs for the order in which you want the departments displayed in the archive pages.",
