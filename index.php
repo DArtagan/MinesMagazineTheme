@@ -40,30 +40,28 @@
     <?php wp_reset_query(); ?>
   </div>
   <!--END LEFTCOL-->
-  <?php
-  $display_categories = explode(",",prinz_get_option('prinz_homecats'));
-  for ($x = 0; $x < sizeof($display_categories); ++$x) {
-  ?>
-    <?php $homecats_query = new WP_Query('showposts='.prinz_get_option('prinz_homecatsnumber').'&cat='.current($display_categories)); ?>
-      <?php // Name and link of each category headline gets printed	?>
-      <div class="rightcol"><h4>
-        <?php wp_list_categories("include=".current($display_categories).";&title_li=&style=none"); ?>
-      </h4></div>
-      <?php next($display_categories); ?>
-      <?php while ($homecats_query->have_posts()) : $homecats_query->the_post(); ?>
-        <div class="clearfloat rightcol">
-        <h3><a href="<?php the_permalink() ?>" rel="bookmark" class="title">
-          <?php the_title(); ?>
-        </a></h3>
-        <h4>By <?php the_author(); ?></h4>
-        <?php if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) { // this is the default WordPress post thumbnail function
-  		    the_post_thumbnail(('rightcol-image'), array('class' =>  "alignleft"));
-  			} ?>
-        <?php the_excerpt() ; ?>
-        </div>
-      <?php endwhile; ?>
-      <?php wp_reset_query(); ?>
-    <?php } ?>
+  <div class="rightcon">
+
+    <?php
+      global $childoptions;
+      foreach ($childoptions as $value) {
+        if (get_option( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; }
+        else { $$value['id'] = get_option( $value['id'] ); }
+      }
+    ?>
+
+    <div id="content">
+      <?php
+        $args = array( 'category' => CurrentIssueID(), 'post_type' =>  'post', 'posts_per_page' => -1 ); 
+        $postslist = get_posts( $args );    
+        foreach ($postslist as $post) :  setup_postdata($post); 
+        ?>  
+          <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2> 
+          <?php the_excerpt(); ?>  
+        <?php endforeach; ?> 
+    </div>
+
+  </div>
 </div>
 <!--END CONTENT-->
 <?php get_footer(); ?>

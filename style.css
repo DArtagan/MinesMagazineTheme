@@ -24,6 +24,18 @@ div.prinz-menu-primary li.current-menu-item {
 	background-color: #840000;
 }
 
+.prinz-menu-primary li li a {
+	background: #444444;
+}
+
+div.prinz-menu-primary li:hover {
+	background: #888888;
+}
+
+.prinz-menu-primary li li a:hover {
+	background: #888888;
+}
+
 div#slider {
 	width: 65%;
 }
