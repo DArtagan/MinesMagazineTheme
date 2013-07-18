@@ -1,5 +1,4 @@
 <?php get_header(); ?>
-<?php include (TEMPLATEPATH.'/tools/get-theme-options.php'); ?>
 <?php
 global $childoptions;
 foreach ($childoptions as $value) {

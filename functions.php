@@ -284,7 +284,9 @@ add_action('template_redirect', 'IssuesTemplate', 1);
 							<?php edit_post_link('Edit', ' | ', ''); ?>
 						</small>
 						<div class="entry" style="padding-bottom: 0px;">
-							<?php postimage($prinz_archiveimage_width,$prinz_archiveimage_height); ?> 
+							<?php if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) { // this is the default WordPress post thumbnail function
+								the_post_thumbnail(array(prinz_get_option('prinz_archiveimage_width'),prinz_get_option('prinz_archiveimage_height')), array("class" =>  "alignleft"));
+							} ?>
 							<?php the_excerpt(); ?>
 						</div>
 						<div class="clear postmetadata"></div>
