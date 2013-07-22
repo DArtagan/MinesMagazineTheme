@@ -1,6 +1,6 @@
 <?php
 
-$prefix = 'MinesMagazine_homepageOrder';
+$prefix = 'MM_homepageOrder';
 
 global $meta_boxes;
 
@@ -32,7 +32,7 @@ $meta_boxes[] = array(
 			// Field name - Will be used as label
 			'name'  => __( 'Subject Area', 'rwmb' ),
 			// Field ID, i.e. the meta key
-			'id'    => "{$prefix}text",
+			'id'    => "{$prefix}_subject",
 			// Field description (optional)
 			'desc'  => __( 'Optional, intended for Inside Mines articles.  If provided, the subject area will display instead of the department heading.', 'rwmb' ),
 			'type'  => 'text',
@@ -43,7 +43,7 @@ $meta_boxes[] = array(
 		// NUMBER
 		array(
 			'name' => __( 'Order', 'rwmb' ),
-			'id'   => "{$prefix}number",
+			'id'   => "{$prefix}_rank",
 			'type' => 'number',
 			'desc' => 'Numeric order on the homepage (lower number means higher priority).',
 			'min'  => 0,

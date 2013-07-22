@@ -224,42 +224,10 @@ class limited_catagories_list_widget extends WP_Widget {
 }
 add_action( 'widgets_init', create_function( '', 'return register_widget("limited_catagories_list_widget");' ) );
 
-
-/**
- * Get name of most recent issue
- */
-	function CurrentIssue()  {
-		$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
-		$issues=  get_categories($arg);
-		$issues[0]->cat_name;
-	}
-
-/**
- * Get name of most recent issue
- */
-	function CurrentIssueID()  {
-		$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
-		$issues=  get_categories($arg);
-		$issues[0]->cat_ID;
-	}
-	
-/**
- * Get category of page
- */
-	function CurrentCategory()  {
-		if( is_category() ) {
-			$catid = get_query_var('cat');
-			echo $catid;
-		} else {
-			echo 'Nope';
-		}
-	}
-	
-
 /**
  * Custom template if the category belongs to the issues parent category
  */
-	function IssuesTemplate()  {
+	/*function IssuesTemplate()  {
 		$parent = get_query_var('cat');
 		while ($parent) {
 			if ($parent == 408) {
@@ -270,31 +238,39 @@ add_action( 'widgets_init', create_function( '', 'return register_widget("limite
 			$parent = $cat->category_parent;
 		}
 	}
-add_action('template_redirect', 'IssuesTemplate', 1);
+add_action('template_redirect', 'IssuesTemplate', 1);*/
+
 
 /**
- * Loop for archives
+ * Get name of most recent issue
  */
-	function MM_HomepageLoop($verbose) {
-		if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
-			<div class="<?php echo ($x <= sizeof($display_categories)/2 ? 'centercol' : 'rightcol'); ?>">
-	          <h4>
-	            <?php wp_list_categories("include=".current($display_categories).";&title_li=&style=none"); ?>
-	          </h4>
-	          <h3><a href="<?php the_permalink() ?>" rel="bookmark" class="title">
-	            <?php the_title(); ?>
-	          </a></h3>
-	          <h4>By <?php the_author(); ?></h4>
-	          <?php if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) { // this is the default WordPress post thumbnail function
-	    		    the_post_thumbnail(('rightcol-image'), array('class' =>  "alignleft"));
-	    			} ?>
-	          <?php the_excerpt() ; ?>
-	        </div>
-			<?php endwhile; ?>
-			<?php endif;
-			wp_reset_query();
+	function MM_currentIssue()  {
+		$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
+		$issues=  get_categories($arg);
+		return $issues[0]->cat_name;
 	}
 
+/**
+ * Get name of most recent issue
+ */
+	function MM_currentIssueID()  {
+		$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
+		$issues=  get_categories($arg);
+		return $issues[0]->cat_ID;
+	}
+	
+/**
+ * Get category of page
+ */
+	function MM_currentCategory()  {
+		if( is_category() ) {
+			$catid = get_query_var('cat');
+			return $catid;
+		} else {
+			return 'Nope';
+		}
+	}
+	
 /**
  * Loop for archives
  */
@@ -324,8 +300,8 @@ add_action('template_redirect', 'IssuesTemplate', 1);
 					<?php } ?>
 				</div>
 			<?php endwhile; ?>
-			<?php endif;
-			wp_reset_query();
+		<?php endif;
+		wp_reset_query();
 	}
 
 	
@@ -361,4 +337,34 @@ add_theme_support( 'post-thumbnails' );
 include('includes/homepageOrder.php');
 //include('includes/demo.php');
 
+
+/**
+* Customize HomePage Query using Post Meta
+*
+* @author Bill Erickson
+* @link http://www.billerickson.net/customize-the-wordpress-query/
+* @param object $query data
+*
+*/
+function MM_homepage_query( $query ) {
+	if( $query->is_main_query() && !is_admin() && $query->is_home() ) {
+		$meta_query = array(
+			array(
+				'key' => 'MM_homepageOrder_rank',
+				'value' => '0',
+				'compare' => '>'
+			)
+		);
+		$categories = MM_currentIssueID() .",-" . get_cat_id(prinz_get_option('prinz_featured') );
+		$query->set( 'meta_query', $meta_query );
+		$query->set( 'orderby', 'meta_value_num' );
+		$query->set( 'meta_key', 'MM_homepageOrder_rank' );
+		$query->set( 'order', 'ASC' );
+		$query->set( 'posts_per_page', '-1' );
+		$query->set( 'cat', $categories );
+		//$query->set( 'post_type', 'post' );
+	}
+	 
+}
+add_action( 'pre_get_posts', 'MM_homepage_query' );
 ?>

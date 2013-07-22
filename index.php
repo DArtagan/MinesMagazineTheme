@@ -19,7 +19,29 @@
   <div id="leftcol" class="clearfloat">
     <?php 
 // "Featured articles" module begins	  
-	$featured_query = new WP_Query('cat='.get_cat_id(prinz_get_option('prinz_featured')).'&showposts='.prinz_get_option('prinz_featurednumber').'&offset='.prinz_get_option('prinz_featuredoffset')); ?>
+  $args = array( 
+    'posts_per_page' => '-1',
+    'orderby' => 'meta_value_num',
+    'meta_key' => 'MM_homepageOrder_rank',
+    'order' => 'ASC',
+    'tax_query' => array(
+        array(
+            'taxonomy' => 'category',
+            'field' => 'id',
+            'terms' => array( MM_currentIssueID(), get_cat_id(prinz_get_option('prinz_featured') ) ),
+            //'terms' => array( 601, 4 ),
+            'operator' => 'AND',
+        )
+    ),
+    'meta_query' => array(
+      array(
+        'key' => 'MM_homepageOrder_rank',
+        'value' => '0',
+        'compare' => '>'
+      )
+    )
+  );
+  $featured_query = new WP_Query( $args ); ?>
     <h4>
       <?php 
 	// name of the "featured articles" category gets printed	  
@@ -52,13 +74,17 @@
 
     <div id="content">
       <?php
-        $args = array( 'category' => CurrentIssueID(), 'post_type' =>  'post', 'posts_per_page' => -1 ); 
-        $postslist = get_posts( $args );    
-        foreach ($postslist as $post) :  setup_postdata($post); 
-        ?>  
-          <h2><a href="<?php the_permalink(); ?>"><?php the_title(); ?></a></h2> 
+        if (have_posts()) : while (have_posts()) : the_post();
+      ?>  
+          <h3><a href="<?php the_permalink(); ?>" rel="bookmark" class="title">
+            <?php the_title(); ?>
+          </a></h3> 
           <?php the_excerpt(); ?>  
-        <?php endforeach; ?> 
+      <?php 
+        //endforeach; 
+        endwhile; endif;
+        wp_reset_query();
+      ?> 
     </div>
 
   </div>
