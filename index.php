@@ -52,7 +52,7 @@
 
     <div id="content">
       <?php
-        $args = array( 'category' => CurrentIssueID(), 'post_type' =>  'post', 'posts_per_page' => -1 ); 
+        //$args = array( 'category' => CurrentIssueID(), 'post_type' =>  'post', 'posts_per_page' => -1 ); 
         $postslist = get_posts( $args );    
         foreach ($postslist as $post) :  setup_postdata($post); 
         ?>  
