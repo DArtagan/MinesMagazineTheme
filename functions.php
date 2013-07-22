@@ -224,42 +224,10 @@ class limited_catagories_list_widget extends WP_Widget {
 }
 add_action( 'widgets_init', create_function( '', 'return register_widget("limited_catagories_list_widget");' ) );
 
-
-/**
- * Get name of most recent issue
- */
-	function CurrentIssue()  {
-		$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
-		$issues=  get_categories($arg);
-		$issues[0]->cat_name;
-	}
-
-/**
- * Get name of most recent issue
- */
-	function CurrentIssueID()  {
-		$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
-		$issues=  get_categories($arg);
-		$issues[0]->cat_ID;
-	}
-	
-/**
- * Get category of page
- */
-	function CurrentCategory()  {
-		if( is_category() ) {
-			$catid = get_query_var('cat');
-			echo $catid;
-		} else {
-			echo 'Nope';
-		}
-	}
-	
-
 /**
  * Custom template if the category belongs to the issues parent category
  */
-	function IssuesTemplate()  {
+	/*function IssuesTemplate()  {
 		$parent = get_query_var('cat');
 		while ($parent) {
 			if ($parent == 408) {
@@ -270,8 +238,39 @@ add_action( 'widgets_init', create_function( '', 'return register_widget("limite
 			$parent = $cat->category_parent;
 		}
 	}
-add_action('template_redirect', 'IssuesTemplate', 1);
+add_action('template_redirect', 'IssuesTemplate', 1);*/
 
+
+/**
+ * Get name of most recent issue
+ */
+	function MM_currentIssue()  {
+		$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
+		$issues=  get_categories($arg);
+		return $issues[0]->cat_name;
+	}
+
+/**
+ * Get name of most recent issue
+ */
+	function MM_currentIssueID()  {
+		$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
+		$issues=  get_categories($arg);
+		return $issues[0]->cat_ID;
+	}
+	
+/**
+ * Get category of page
+ */
+	function MM_currentCategory()  {
+		if( is_category() ) {
+			$catid = get_query_var('cat');
+			return $catid;
+		} else {
+			return 'Nope';
+		}
+	}
+	
 /**
  * Loop for archives
  */
@@ -340,7 +339,7 @@ include('includes/homepageOrder.php');
 
 
 /**
-* Customize Event Query using Post Meta
+* Customize HomePage Query using Post Meta
 *
 * @author Bill Erickson
 * @link http://www.billerickson.net/customize-the-wordpress-query/
@@ -356,16 +355,16 @@ function MM_homepage_query( $query ) {
 				'compare' => '>'
 			)
 		);
+		$categories = MM_currentIssueID() .",-" . get_cat_id(prinz_get_option('prinz_featured') );
 		$query->set( 'meta_query', $meta_query );
 		$query->set( 'orderby', 'meta_value_num' );
 		$query->set( 'meta_key', 'MM_homepageOrder_rank' );
 		$query->set( 'order', 'ASC' );
 		$query->set( 'posts_per_page', '-1' );
-		$query->set( 'cat', CurrentIssueID());
-		$query->set( 'post_type', 'post');
+		$query->set( 'cat', $categories );
+		//$query->set( 'post_type', 'post' );
 	}
 	 
 }
- 
 add_action( 'pre_get_posts', 'MM_homepage_query' );
 ?>
