@@ -4,15 +4,42 @@ body {
 	padding: 0px;
 }
 
-#page {
-	box-shadow: none;
-	margin: 0 auto;
-	padding: 0px;
+
+div#header {
+	height: 100px;
+	position: fixed;
+	width: 100%;
 }
 
-div#banner img {
+div#logo img {
+	height: 76px;
+	margin: 12px;
+}
+
+div#headerwidgets {
+	padding: 12px;
+}
+
+div#banner {
 	height: 300px;
+	background-image: url("http://beta.minesmagazine.com/wp-content/uploads/2013/07/solar.png");
+	background-size: cover;
+	background-repeat: no-repeat;
+	background-position: 50% 50%;
+	margin-top: 100px;
+	position: fixed;
 	width: 100%;
+}
+
+div#page {
+	background-color: #95A9CA;
+	box-shadow: none;
+	margin: 0;
+	padding: 0 15%;
+	position: relative;
+	top: 400px;
+	width: 100%;
+	z-index: 1000;
 }
 
 div.prinz-menu-primary {
@@ -49,6 +76,7 @@ div#slider {
 
 div#content {
 	float: none;
+	text-align: center;
 	width: 100%;
 }
 
@@ -65,10 +93,10 @@ div#features {
 }
 
 div.post, div.feature {
-	background: #dddddd;
+	background: #ffffff;
 	display: inline-block;
 	margin: 10px;
-	padding: 0px;
+	padding: 10px;
 	vertical-align: top;
 	width: 297px;
 }
@@ -143,13 +171,8 @@ div.bigRightSwf a {
     display:block; position:absolute; top:0; left:0; width:100%; height:100%;
 }
 
-
-div#rightcol a.title {
-	text-align: left;
-}
-
-#rightcol {
-text-align: left;
+div#sidebar {
+	width: 320px;
 }
 
 #sidelist li.feed {

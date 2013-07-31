@@ -88,7 +88,6 @@ body, select, input, textarea { font: 12px Arial, Verdana, Sans-Serif; line-heig
 </div><!-- end #header -->
 
 <div id="banner">
-	<img src="http://beta.minesmagazine.com/wp-content/uploads/2013/07/solar.png">
 </div>
 
 <div id="page" class="clearfloat">

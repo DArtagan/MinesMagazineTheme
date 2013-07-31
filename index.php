@@ -5,7 +5,7 @@
 
 <div id="slider">
   <?php if ( function_exists( 'get_wp_parallax_content_slider' ) ) {
-    get_wp_parallax_content_slider();
+    //get_wp_parallax_content_slider();
   } ?>
 </div>
 
@@ -42,11 +42,6 @@
     )
   );
   $featured_query = new WP_Query( $args ); ?>
-    <h4>
-      <?php 
-	// name of the "featured articles" category gets printed	  
-	wp_list_categories('include='.get_cat_id(prinz_get_option('prinz_featured')).'&title_li=&style=none'); ?>
-    </h4>
     <?php while ($featured_query->have_posts()) : $featured_query->the_post(); ?>
     <div class="feature">
       <h3><a href="<?php the_permalink() ?>" rel="bookmark" class="title">

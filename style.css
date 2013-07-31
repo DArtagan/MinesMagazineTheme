@@ -3,5 +3,6 @@ Theme Name: Custom Branford Implementation
 Description: A Child Theme of the PRiNZ BranfordMagazie Pro theme
 Template: PRiNZ_BranfordMagazine_pro/branfordmagazine-pro
 */
-/*@import url('style.normal.css');*/
-@import url('style.crazy.css');
+/*@import url('styles/style.normal.css');
+@import url('styles/bootstrap.css');*/
+@import url('styles/style.crazy.css');
