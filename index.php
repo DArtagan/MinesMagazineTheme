@@ -16,7 +16,7 @@
     <?php else : ?>
     <?php endif; ?>
 
-  <div id="leftcol" class="clearfloat">
+  <div id="features">
     <?php 
 // "Featured articles" module begins	  
   $args = array( 
@@ -61,9 +61,7 @@
     <?php endwhile; ?>
     <?php wp_reset_query(); ?>
   </div>
-  <!--END LEFTCOL-->
-  <div class="rightcon">
-
+  <!--END FEATURES-->
     <?php
       global $childoptions;
       foreach ($childoptions as $value) {
@@ -71,22 +69,20 @@
         else { $$value['id'] = get_option( $value['id'] ); }
       }
     ?>
-
-    <div id="content">
-      <?php
-        if (have_posts()) : while (have_posts()) : the_post();
-      ?>  
+    <?php
+      if (have_posts()) : while (have_posts()) : the_post();
+    ?>  
+        <div class="post">
           <h3><a href="<?php the_permalink(); ?>" rel="bookmark" class="title">
             <?php the_title(); ?>
           </a></h3> 
-          <?php the_excerpt(); ?>  
-      <?php 
-        //endforeach; 
-        endwhile; endif;
-        wp_reset_query();
-      ?> 
-    </div>
-
+          <?php the_excerpt(); ?>
+        </div>
+    <?php 
+      //endforeach; 
+      endwhile; endif;
+      wp_reset_query();
+    ?> 
   </div>
 </div>
 <!--END CONTENT-->
