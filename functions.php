@@ -1,5 +1,5 @@
 <?php
- 
+
 function childtheme_create_stylesheet() {
     $templatedir = get_bloginfo('template_directory');
     $stylesheetdir = get_bloginfo('stylesheet_directory');
