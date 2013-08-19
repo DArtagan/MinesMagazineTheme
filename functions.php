@@ -334,37 +334,56 @@ add_theme_support( 'post-thumbnails' );
 /*
  * Custom Metabox
  */
-include('includes/homepageOrder.php');
+include('includes/homepageSetup.php');
 //include('includes/demo.php');
 
+/**
+ * Query for homepage articles, for a given column
+ */
+	function MM_homepageQuery( $column ) {
+		$args = array( 
+        'posts_per_page' => '-1',
+        'orderby' => 'meta_value_num',
+        'meta_key' => 'MM_homepageSetup_rank',
+        'order' => 'ASC',
+        'tax_query' => array(
+          array(
+            'taxonomy' => 'category',
+            'field' => 'id',
+            'terms' => array( MM_currentIssueID() ),
+            'operator' => 'AND',
+          )
+        ),
+        'meta_query' => array(
+          array(
+            'key' => 'MM_homepageSetup_rank',
+            'value' => '0',
+            'compare' => '>'
+          ),
+          array(
+            'key' => 'MM_homepageSetup_column',
+            'value' => $column,
+          )
+        )
+      );
+      return new WP_Query( $args );
+	}
 
 /**
-* Customize HomePage Query using Post Meta
-*
-* @author Bill Erickson
-* @link http://www.billerickson.net/customize-the-wordpress-query/
-* @param object $query data
-*
-*/
-function MM_homepage_query( $query ) {
-	if( $query->is_main_query() && !is_admin() && $query->is_home() ) {
-		$meta_query = array(
-			array(
-				'key' => 'MM_homepageOrder_rank',
-				'value' => '0',
-				'compare' => '>'
-			)
-		);
-		$categories = MM_currentIssueID() .",-" . get_cat_id(prinz_get_option('prinz_featured') );
-		$query->set( 'meta_query', $meta_query );
-		$query->set( 'orderby', 'meta_value_num' );
-		$query->set( 'meta_key', 'MM_homepageOrder_rank' );
-		$query->set( 'order', 'ASC' );
-		$query->set( 'posts_per_page', '-1' );
-		$query->set( 'cat', $categories );
-		//$query->set( 'post_type', 'post' );
+ * Puts the results of a query into boxes, specifically for the homepage
+ */
+	function MM_homepageBox( $article_query ) {
+		while ($article_query->have_posts()) : $article_query->the_post();
+		    echo '<div class="post">';
+				echo '<h3><a href="' . get_permalink() . '" rel="bookmark" class="title">' . get_the_title() . '</a></h3>';
+				echo '<h4>By ' . the_author() . '</h4>';
+				if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) {
+					the_post_thumbnail(('featured-image'), array('class' =>  ""));
+				}
+				the_excerpt();
+		    echo '</div>';
+    	endwhile;
+    	wp_reset_query();
 	}
-	 
-}
-add_action( 'pre_get_posts', 'MM_homepage_query' );
+
 ?>

@@ -3,8 +3,8 @@
 
 <div id="content" class="clearfloat">
 
-  <div id="feature">
-
+  <div id="feature" class="column">
+    <?php MM_homepageBox(MM_homepageQuery( 'feature' )); ?>
   </div>
 
   <div>
@@ -15,55 +15,17 @@
     ?>
   </div>
 
-  <div id="leftcol">
-    <?php 
-      $args = array( 
-        'posts_per_page' => '-1',
-        'orderby' => 'meta_value_num',
-        'meta_key' => 'MM_homepageSetup_rank',
-        'order' => 'ASC',
-        'tax_query' => array(
-          array(
-            'taxonomy' => 'category',
-            'field' => 'id',
-            'terms' => array( MM_currentIssueID() ),
-            'operator' => 'AND',
-          )
-        ),
-        'meta_query' => array(
-          array(
-            'key' => 'MM_homepageSetup_rank',
-            'value' => '0',
-            'compare' => '>'
-          ),
-          array(
-            'key' => 'MM_homepageSetup_column',
-            'value' => 'left',
-          )
-        )
-      );
-      $article_query = new WP_Query( $args ); ?>
-    <?php while ($article_query->have_posts()) : $article_query->the_post(); ?>
-    <div class="post">
-      <h3><a href="<?php the_permalink() ?>" rel="bookmark" class="title">
-        <?php the_title(); ?>
-      </a></h3>
-      <h4>By <?php the_author(); ?></h4>
-      <?php if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) { // this is the default WordPress post thumbnail function
-        the_post_thumbnail(('featured-image'), array('class' =>  ""));
-      } ?>
-      <?php the_excerpt(); ?>
-    </div>
-    <?php endwhile; ?>
-    <?php wp_reset_query(); ?>
+  <div id="leftcolumn" class="column">
+    <?php MM_homepageBox(MM_homepageQuery( 'left' )); ?>
   </div>
 
-  <div id="centercol">
-    
+  <div id="centercolumn" class="column">
+    <?php MM_homepageBox(MM_homepageQuery( 'center' )); ?>
   </div>
 
-  <div id="rightcol">
-    <?php get_sidebar(); ?>  
+  <div id="rightcolumn" class="column">
+    <?php get_sidebar(); ?>
+    <?php MM_homepageBox(MM_homepageQuery( 'right' )); ?>
   </div>
 
 </div>
