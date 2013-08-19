@@ -5,7 +5,7 @@
 
 <div id="slider">
   <?php if ( function_exists( 'get_wp_parallax_content_slider' ) ) {
-    //get_wp_parallax_content_slider();
+    get_wp_parallax_content_slider();
   } ?>
 </div>
 

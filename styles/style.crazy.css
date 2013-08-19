@@ -20,6 +20,7 @@ div#headerwidgets {
 	padding: 12px;
 }
 
+<<<<<<< HEAD:styles/style.crazy.css
 div#banner {
 	height: 300px;
 	background-image: url("http://beta.minesmagazine.com/wp-content/uploads/2013/07/solar.png");
@@ -38,6 +39,21 @@ div#page {
 	padding: 0 15%;
 	position: relative;
 	top: 400px;
+=======
+div#header {
+	height: 100px;
+	position: fixed;
+	width: 100%;
+	z-index: -5;
+}
+
+div#banner {
+	background-image: url("http://beta.minesmagazine.com/wp-content/uploads/2013/07/solar.png");
+}
+
+div#banner img {
+	height: 100%;
+>>>>>>> 8d0cdaf9e4e5c34f7c04e139c8a65377808d271f:style.crazy.css
 	width: 100%;
 	z-index: 1000;
 }
