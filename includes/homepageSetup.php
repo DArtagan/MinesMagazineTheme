@@ -1,6 +1,6 @@
 <?php
 
-$prefix = 'MM_homepageOrder';
+$prefix = 'MM_homepageSetup';
 
 global $meta_boxes;
 
@@ -8,10 +8,10 @@ $meta_boxes = array();
 
 $meta_boxes[] = array(
 	// Meta box id, UNIQUE per meta box. Optional since 4.1.5
-	'id' => 'homepageOrder',
+	'id' => 'homepageSetup',
 
 	// Meta box title - Will appear at the drag and drop handle bar. Required.
-	'title' => __( 'Homepage Order', 'rwmb' ),
+	'title' => __( 'Homepage Setup', 'rwmb' ),
 
 	// Post types, accept custom post types as well - DEFAULT is array('post'). Optional.
 	'pages' => array( 'post', 'page' ),
@@ -27,7 +27,32 @@ $meta_boxes[] = array(
 
 	// List of meta fields
 	'fields' => array(
-		// TEXT
+		// COLUMN
+		array(
+			'name'     => __( 'Select', 'rwmb' ),
+			'id'       => "{$prefix}_column",
+			'type'     => 'select',
+			// Array of 'value' => 'Label' pairs for select box
+			'options'  => array(
+				'left' => __( 'Left Column', 'rwmb' ),
+				'center' => __( 'Center Column', 'rwmb' ),
+				'right' => __( 'Right Column', 'rwmb' ),
+				'feature' => __( 'Feature', 'rwmb' ),
+			),
+			// Select multiple values, optional. Default is false.
+			'multiple' => false,
+			'std'	=> __( 'Select an column', 'rwmb' ),
+		),
+		// RANK
+		array(
+			'name' => __( 'Rank', 'rwmb' ),
+			'id'   => "{$prefix}_rank",
+			'type' => 'number',
+			'desc' => 'Numeric order on the homepage (lower number means higher priority).',
+			'min'  => 0,
+			'step' => 5,
+		),
+		// SUBJECT
 		array(
 			// Field name - Will be used as label
 			'name'  => __( 'Subject Area', 'rwmb' ),
@@ -40,15 +65,6 @@ $meta_boxes[] = array(
 			//'std'   => __( 'Default text value', 'rwmb' ),
 			// CLONES: Add to make the field cloneable (i.e. have multiple value)
 		),
-		// NUMBER
-		array(
-			'name' => __( 'Order', 'rwmb' ),
-			'id'   => "{$prefix}_rank",
-			'type' => 'number',
-			'desc' => 'Numeric order on the homepage (lower number means higher priority).',
-			'min'  => 0,
-			'step' => 5,
-		),
 	)
 );
 
@@ -59,7 +75,7 @@ $meta_boxes[] = array(
  *
  * @return void
  */
-function MM_homepageOrder_register_meta_boxes()
+function MM_homepageSetup_register_meta_boxes()
 {
 	// Make sure there's no errors when the plugin is deactivated or during upgrade
 	if ( !class_exists( 'RW_Meta_Box' ) )
@@ -74,6 +90,6 @@ function MM_homepageOrder_register_meta_boxes()
 // Hook to 'admin_init' to make sure the meta box class is loaded before
 // (in case using the meta box class in another plugin)
 // This is also helpful for some conditionals like checking page template, categories, etc.
-add_action( 'admin_init', 'MM_homepageOrder_register_meta_boxes' );
+add_action( 'admin_init', 'MM_homepageSetup_register_meta_boxes' );
 
 ?>
