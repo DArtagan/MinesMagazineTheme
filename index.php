@@ -3,12 +3,6 @@
 
 <?php get_sidebar(); ?>
 
-<div id="slider">
-  <?php if ( function_exists( 'get_wp_parallax_content_slider' ) ) {
-    get_wp_parallax_content_slider();
-  } ?>
-</div>
-
 <div id="content" class="clearfloat">
   
     <?php if ( is_active_sidebar( 'belowtabbed' ) ) : // Widgetized area below the tabbed content ?>
