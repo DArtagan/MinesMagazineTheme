@@ -375,8 +375,18 @@ include('includes/homepageSetup.php');
 	function MM_homepageBox( $article_query ) {
 		while ($article_query->have_posts()) : $article_query->the_post();
 		    echo '<div class="post">';
+		    	$subject = get_post_meta(get_the_ID(), 'MM_homepageSetup_subject', TRUE);
+		    	if($subject != '') {
+		    		echo $subject;
+		    	} else {
+		    		foreach((get_the_category()) as $chaine){ 
+		    			if($chaine->parent == 1) { 
+		    				echo $chaine->cat_name . ' ';  
+		    			}
+					}
+		    	}
 				echo '<h3><a href="' . get_permalink() . '" rel="bookmark" class="title">' . get_the_title() . '</a></h3>';
-				echo '<h4>By ' . the_author() . '</h4>';
+				echo '<h4>By ' . get_the_author() . '</h4>';
 				if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) {
 					the_post_thumbnail(('featured-image'), array('class' =>  ""));
 				}

@@ -45,6 +45,7 @@ div.prinz-menu-primary li:hover {
 }
 
 div#content {
+	background: #E6E3D3;
 	float: none;
 	width: 100%;
 }
@@ -74,6 +75,7 @@ div#rightcolumn {
 }
 
 div#sidebar {
+	background: #ffffff;
 	float: none;
 	margin-bottom: 30px;
 	padding: 0px;
@@ -81,11 +83,15 @@ div#sidebar {
 }
 
 div.post {
-	background: #dddddd;
+	background: #ffffff;
 	margin: 0px;
 	padding: 0px;
 	vertical-align: top;
 	width: 100%;
+}
+
+.title:link, .title:active, .title:visited {
+	color: #840000;
 }
 
 div.issue-images img {
