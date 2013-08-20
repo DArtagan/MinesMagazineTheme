@@ -373,6 +373,12 @@ include('includes/homepageSetup.php');
  * Puts the results of a query into boxes, specifically for the homepage
  */
 	function MM_homepageBox( $article_query ) {
+
+	global $childoptions;
+	foreach ($childoptions as $value) {
+    	if (get_option( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; }
+    	else { $$value['id'] = get_option( $value['id'] ); }
+    }
 		while ($article_query->have_posts()) : $article_query->the_post();
 		    echo '<div class="post">';
 		    	$subject = get_post_meta(get_the_ID(), 'MM_homepageSetup_subject', TRUE);
@@ -380,7 +386,7 @@ include('includes/homepageSetup.php');
 		    		echo $subject;
 		    	} else {
 		    		foreach((get_the_category()) as $chaine){ 
-		    			if($chaine->parent == 1) { 
+		    			if($chaine->parent == $MM_departmentCat) { 
 		    				echo $chaine->cat_name . ' ';  
 		    			}
 					}

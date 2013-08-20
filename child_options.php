@@ -13,9 +13,8 @@ $childoptions = array (
 
 	array ( "type" => "open"),
 
-    array ( "name" => "Homepage Categories",
-            "desc" => "Comma seperated list of category IDs to be excluded from the homepage.",
-            "id" => $childshortname . "_exHomepageCats",
+    array ( "name" => "Department Category ID",
+            "id" => $childshortname . "_departmentCat",
             "type" => "text",
             "std" => __("") ),
 
