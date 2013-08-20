@@ -48,9 +48,9 @@ $meta_boxes[] = array(
 			'name' => __( 'Rank', 'rwmb' ),
 			'id'   => "{$prefix}_rank",
 			'type' => 'number',
-			'desc' => 'Numeric order on the homepage (lower number means higher priority).',
+			'desc' => 'Numeric order on the homepage (lower number means higher priority). Allows decimals with 0.01 precision.',
 			'min'  => 0,
-			'step' => 5,
+			'step' => 0.01,
 		),
 		// SUBJECT
 		array(
@@ -64,6 +64,22 @@ $meta_boxes[] = array(
 			// Default value (optional)
 			//'std'   => __( 'Default text value', 'rwmb' ),
 			// CLONES: Add to make the field cloneable (i.e. have multiple value)
+		),
+		// IMAGE SIZE
+		array(
+			'name' => __( 'Image Size', 'rwmb' ),
+			'id'   => "{$prefix}_imgSize",
+			'type'     => 'select',
+			// Array of 'value' => 'Label' pairs for select box
+			'options'  => array(
+				'fullwidth' => __( 'Fullwidth', 'rwmb' ),
+				'square' => __( 'Square', 'rwmb' ),
+				'feature' => __( 'Feature', 'rwmb' ),
+				'explicit' => __( 'Explicit (dimensions of image)', 'rwmb' ),
+			),
+			// Select multiple values, optional. Default is false.
+			'multiple' => false,
+			'std'	=> __( 'Select an column', 'rwmb' ),
 		),
 	)
 );
