@@ -13,12 +13,17 @@ div#page {
 	width: 980px;
 }
 
-div#header, div#navwrap {
-	padding: 0px 20px;
+div#header {
+	padding: 25px 35px;
+}
+
+div#navwrap {
+	padding: 0px;
 }
 
 div.prinz-menu-primary {
 	background-color: #333333;
+	padding: 0px 25px;
 }
 
 div.prinz-menu-primary a {
@@ -53,8 +58,8 @@ div#content {
 }
 
 div#content img {
-	border: 1px solid #999999 !important;
-	padding: 1px !important;
+	border: 1px solid #999999;
+	padding: 1px;
 }
 
 div.column {
@@ -76,14 +81,6 @@ div#rightcolumn {
 	float: right;
 }
 
-div#sidebar {
-	background: #ffffff;
-	float: none;
-	margin-bottom: 30px;
-	padding: 0px;
-	width: 100%;
-}
-
 div.post {
 	background: #ffffff;
 	margin: 15px 0px;
@@ -100,13 +97,23 @@ div.post img {
 	color: #840000;
 }
 
-div.articleImg {
-	overflow: hidden;
-    vertical-align: middle;
+div#issueDate {
+	margin: 0px 0px 20px;
 }
 
-div.articleImg * {
-    vertical-align: middle;
+div#sidebar {
+	background: #ffffff;
+	float: none;
+	margin-bottom: 30px;
+	width: 100%;
+}
+
+div.sidebar_widget {
+	padding: 0px 12px 20px;
+}
+
+div#sidebar h3 {
+	margin: 0px 0px 12px;
 }
 
 div.issue-images img {
@@ -168,7 +175,7 @@ ul.search_results div.search_footer {
 	padding-top: 5px;
 }
 
-a.sam_ad img {
+div#sidelist a.sam_ad img {
 	border: 0px;
 }
 
