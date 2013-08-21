@@ -1,5 +1,24 @@
 <?php
 
+/**
+ * child-theme options activation
+ */
+include(STYLESHEETPATH."/child_options.php");
+
+
+/**
+ * Import child-theme options
+ */
+	global $childoptions;
+	foreach ($childoptions as $value) {
+    	if (get_option( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; }
+    	else { $$value['id'] = get_option( $value['id'] ); }
+    }
+
+
+/**
+ * Stylesheets
+ */
 function childtheme_create_stylesheet() {
     $templatedir = get_bloginfo('template_directory');
     $stylesheetdir = get_bloginfo('stylesheet_directory');
@@ -20,6 +39,14 @@ function childtheme_activate_stylesheet() {
   href="<?php echo get_stylesheet_directory_uri(); ?>/style.css" /><?php
 }
 add_action('wp_head', 'childtheme_activate_stylesheet', 99);
+
+
+/**
+ * Register image sizes
+ */
+	add_image_size('fullwidth' , $MM_fullwidthWidth, $MM_fullwidthHeight, TRUE );
+	add_image_size('square', $MM_squareWidth, $MM_squareHeight, TRUE );
+	add_image_size('feature', $MM_featureWidth, $MM_featureHeight, TRUE );
 
 
 /**
@@ -44,12 +71,6 @@ class myUsers {
 }
 
 myUsers::init();
-
-
-/**
- * child-theme options activation
- */
-include(STYLESHEETPATH."/child_options.php");
 
 
 /**
@@ -374,13 +395,9 @@ include('includes/homepageSetup.php');
  */
 	function MM_homepageBox( $article_query ) {
 
-	global $childoptions;
-	foreach ($childoptions as $value) {
-    	if (get_option( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; }
-    	else { $$value['id'] = get_option( $value['id'] ); }
-    }
 		while ($article_query->have_posts()) : $article_query->the_post();
 		    echo '<div class="post">';
+		    $key = get_post_meta(get_the_ID(), 'MM_homepageSetup_imgSize', TRUE);
 		    	$subject = get_post_meta(get_the_ID(), 'MM_homepageSetup_subject', TRUE);
 		    	if($subject != '') {
 		    		echo $subject;
@@ -394,7 +411,7 @@ include('includes/homepageSetup.php');
 				echo '<h3><a href="' . get_permalink() . '" rel="bookmark" class="title">' . get_the_title() . '</a></h3>';
 				echo '<h4>By ' . get_the_author() . '</h4>';
 				if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) {
-					the_post_thumbnail(('featured-image'), array('class' =>  ""));
+					the_post_thumbnail(get_post_meta(get_the_ID(), 'MM_homepageSetup_imgSize', TRUE));
 				}
 				the_excerpt();
 		    echo '</div>';

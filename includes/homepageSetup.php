@@ -79,7 +79,7 @@ $meta_boxes[] = array(
 			),
 			// Select multiple values, optional. Default is false.
 			'multiple' => false,
-			'std'	=> __( 'Select an column', 'rwmb' ),
+			'std'	=> __( 'Select an image size', 'rwmb' ),
 		),
 	)
 );

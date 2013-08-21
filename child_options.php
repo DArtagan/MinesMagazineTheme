@@ -18,6 +18,42 @@ $childoptions = array (
             "type" => "text",
             "std" => __("") ),
 
+    array( "type" => "close"),
+    array( "type" => "open"),
+
+    array ( "name" => "Fullwidth height",
+            "id" => $childshortname . "_fullwidthHeight",
+            "type" => "text",
+            "std" => __("") ),
+
+    array ( "name" => "Fullwidth width",
+            "id" => $childshortname . "_fullwidthWidth",
+            "type" => "text",
+            "std" => __("") ),
+
+    array ( "name" => "Square height",
+            "id" => $childshortname . "_squareHeight",
+            "type" => "text",
+            "std" => __("") ),
+
+    array ( "name" => "Square width",
+            "id" => $childshortname . "_squareWidth",
+            "type" => "text",
+            "std" => __("") ),
+
+    array ( "name" => "Feature height",
+            "id" => $childshortname . "_featureHeight",
+            "type" => "text",
+            "std" => __("") ),
+
+    array ( "name" => "Fullwidth width",
+            "id" => $childshortname . "_featureWidth",
+            "type" => "text",
+            "std" => __("") ),
+
+    array( "type" => "close"),
+    array ( "type" => "open"),
+
 	array (	"name" => "Archive's Department Order",
 			"desc" => "Comma seperated list of category IDs for the order in which you want the departments displayed in the archive pages.",
 			"id" => $childshortname . "_department_order",
@@ -30,7 +66,7 @@ $childoptions = array (
 			"type" => "text",
 			"std" => __("") ),
 
-	array(    "type" => "close")
+	array( "type" => "close")
 );
 
 function childtheme_add_admin() {
