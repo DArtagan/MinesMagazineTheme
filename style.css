@@ -9,7 +9,8 @@ body {
 }
 
 div#page {
-	padding: 10px 0px 35px;
+	padding: 10px 0px 0px;
+	width: 980px;
 }
 
 div#header, div#navwrap {
@@ -47,6 +48,7 @@ div.prinz-menu-primary li:hover {
 div#content {
 	background: #E6E3D3;
 	float: none;
+	padding: 0px 10px 35px;
 	width: 100%;
 }
 
@@ -84,14 +86,27 @@ div#sidebar {
 
 div.post {
 	background: #ffffff;
-	margin: 0px;
-	padding: 0px;
+	margin: 15px 0px;
+	padding: 12px;
 	vertical-align: top;
 	width: 100%;
 }
 
+div.post img {
+	float: left;
+}
+
 .title:link, .title:active, .title:visited {
 	color: #840000;
+}
+
+div.articleImg {
+	overflow: hidden;
+    vertical-align: middle;
+}
+
+div.articleImg * {
+    vertical-align: middle;
 }
 
 div.issue-images img {
@@ -155,22 +170,6 @@ ul.search_results div.search_footer {
 
 a.sam_ad img {
 	border: 0px;
-}
-
-div.bigRightSwf {
-    position:relative; width:300px; height:250px;
-}
-div.bigRightSwf a {
-    display:block; position:absolute; top:0; left:0; width:100%; height:100%;
-}
-
-
-div#rightcol a.title {
-	text-align: left;
-}
-
-#rightcol {
-text-align: left;
 }
 
 #sidelist li.feed {

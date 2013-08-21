@@ -395,9 +395,14 @@ include('includes/homepageSetup.php');
  */
 	function MM_homepageBox( $article_query ) {
 
+		global $childoptions;
+		foreach ($childoptions as $value) {
+	    	if (get_option( $value['id'] ) === FALSE) { $$value['id'] = $value['std']; }
+	    	else { $$value['id'] = get_option( $value['id'] ); }
+	    }
+
 		while ($article_query->have_posts()) : $article_query->the_post();
 		    echo '<div class="post">';
-		    $key = get_post_meta(get_the_ID(), 'MM_homepageSetup_imgSize', TRUE);
 		    	$subject = get_post_meta(get_the_ID(), 'MM_homepageSetup_subject', TRUE);
 		    	if($subject != '') {
 		    		echo $subject;
