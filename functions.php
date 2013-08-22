@@ -123,6 +123,51 @@ add_action( 'widgets_init', create_function( '', 'return register_widget("widget
 
 
 /**
+ * ConnectWidget Class
+ */
+class MM_ConnectWidget extends WP_Widget {
+	/** constructor */
+	function MM_ConnectWidget() {
+		parent::WP_Widget( 'MM_ConnectWidget', $name = 'Mines Connect Links' );
+	}
+
+	/** @see WP_Widget::widget */
+	function widget( $args, $instance ) {
+		?>
+			<div class="MM_connect"><a href="http://mines.edu">Mines.edu</a><a href="http://giving.mines.edu">CSM Foundation</a><a href="http://minesnewsroom.com">Newsroom</a></div>
+		<?php
+	}
+
+	/** @see WP_Widget::update */
+	function update( $new_instance, $old_instance ) {
+		$instance = $old_instance;
+		$instance['title'] = strip_tags($new_instance['title']);
+		return $instance;
+	}
+
+	/** @see WP_Widget::form */
+	function form( $instance ) {
+		if ( $instance ) {
+			$title = esc_attr( $instance[ 'title' ] );
+		}
+		else {
+			$title = __( 'New title', 'text_domain' );
+		}
+		?>
+		<p>
+		<label for="<?php echo $this->get_field_id('title'); ?>"><?php _e('Title:'); ?></label> 
+		<input class="widefat" id="<?php echo $this->get_field_id('title'); ?>" name="<?php echo $this->get_field_name('title'); ?>" type="text" value="<?php echo $title; ?>" />
+		</p>
+		<?php 
+	}
+
+} // class MM_ConnectWidget
+
+// register MM_ConnectWidget
+add_action( 'widgets_init', create_function( '', 'return register_widget("MM_ConnectWidget");' ) );
+
+
+/**
  * RecentIssuesWidget Class
  */
 class RecentIssuesWidget extends WP_Widget {

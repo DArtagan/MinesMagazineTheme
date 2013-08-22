@@ -19,6 +19,16 @@ div#header {
 	padding: 25px 35px;
 }
 
+div#logo {
+	display: inline;
+}
+
+div#headerwidgets {
+	float: right;
+	margin: 0px;
+	position: inherit;
+}
+
 div#navwrap {
 	padding: 0px;
 }
@@ -59,7 +69,7 @@ ul#primary li.menu-item:first-child {
 div#content {
 	background: #E6E3D3;
 	float: none;
-	padding: 0px 10px 35px;
+	padding: 15px 10px 35px;
 	width: 100%;
 }
 
@@ -90,7 +100,7 @@ div#rightcolumn {
 
 div.post {
 	background: #ffffff;
-	margin: 15px 0px;
+	margin: 0px 0px 15px;
 	overflow: auto;
 	padding: 12px;
 	vertical-align: top;
@@ -222,6 +232,27 @@ div.clear {
 
 div#footer, div#footer a {
 	color: #ffffff;
+}
+
+div.MM_connect {
+    position: relative;
+    top: 20px;
+}
+
+div.MM_connect a {
+    color: #3E557D;
+    font-family: tahoma;
+    font-size: 1.2em;
+    font-weight: bold;
+    margin: 10px;
+
+    text-decoration: none;
+    text-transform: uppercase;
+
+}
+
+.MM_connect > a:hover {
+	text-decoration: underline;
 }
 
 img#search_results_activity_indicator {
