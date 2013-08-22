@@ -27,7 +27,7 @@
 
   <div id="rightcolumn" class="column">
     <div id="issueDate">
-      <h1 style="text-align: center;"><?php echo MM_currentIssue() ?></h1>
+      <h1><?php echo MM_currentIssue() ?></h1>
     </div>
     <?php get_sidebar(); ?>
     <?php MM_homepageBox(MM_homepageQuery( 'right' )); ?>

@@ -5,7 +5,9 @@ Template: PRiNZ_BranfordMagazine_pro/branfordmagazine-pro
 */
 
 body {
-	background-color: #0e1c52 !important;
+	/*background-color: #0e1c52;*/
+	background-color: #95a9ca;
+	/*background-color: #e5e8f1;*/
 }
 
 div#page {
@@ -50,6 +52,10 @@ div.prinz-menu-primary li:hover {
 	background: #888888;
 }
 
+ul#primary li.menu-item:first-child {
+	border-left: 1px solid #ffffff;
+}
+
 div#content {
 	background: #E6E3D3;
 	float: none;
@@ -59,6 +65,7 @@ div#content {
 
 div#content img {
 	border: 1px solid #999999;
+	margin: 4px 16px 12px 0px;
 	padding: 1px;
 }
 
@@ -84,6 +91,7 @@ div#rightcolumn {
 div.post {
 	background: #ffffff;
 	margin: 15px 0px;
+	overflow: auto;
 	padding: 12px;
 	vertical-align: top;
 	width: 100%;
@@ -93,12 +101,67 @@ div.post img {
 	float: left;
 }
 
+div.post h3 {
+	margin: 15px 0px 10px;
+	padding: 0px;
+}
+
+div.post h4 {
+	font-size: 1.1em;
+	font-style: italic;
+}
+
 .title:link, .title:active, .title:visited {
 	color: #840000;
 }
 
+.subnav li a:link, .subnav li a:visited {
+    background: none repeat scroll 0 0 #FFFFFF;
+    border-bottom: 1px solid #999999;
+    display: block;
+    padding: 1px 2px 1px 0;
+}
+
+#sidelist a:link, #sidelist a:active, #sidelist a:visited {
+    text-decoration: none;
+}
+
+#sidelist a:hover {
+    text-decoration: underline;
+}
+
+#sidelist .children li a, #sidelist .children li a:visited {
+    border: 0 none;
+    color: #000000;
+    text-indent: 15px;
+}
+
+li.cat-item:last-child {
+    padding-bottom: 3px;
+}
+
+div.subject {
+	border-bottom: 1px solid #CCCCCC;
+    font-size: 1.1em;
+    font-weight: bold;
+    padding-bottom: 2px;
+    width: 100%;
+}
+
+div.homepageEdit, div.homepageEdit a {
+	color: #888888;
+	float: right;
+	text-decoration: none;
+}
+
 div#issueDate {
 	margin: 0px 0px 20px;
+}
+
+div#issueDate h1 {
+	color: #840000;
+	font-size: 2.5em;
+	text-align: center;
 }
 
 div#sidebar {
@@ -114,6 +177,12 @@ div.sidebar_widget {
 
 div#sidebar h3 {
 	margin: 0px 0px 12px;
+}
+
+
+.bigRightSwf object {
+    height: 229px !important;
+    width: 274px !important;
 }
 
 div.issue-images img {
@@ -149,6 +218,10 @@ div.issue-images a div:hover {
 
 div.clear {
 	clear: both;
+}
+
+div#footer, div#footer a {
+	color: #ffffff;
 }
 
 img#search_results_activity_indicator {

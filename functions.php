@@ -403,7 +403,9 @@ include('includes/homepageSetup.php');
 
 		while ($article_query->have_posts()) : $article_query->the_post();
 		    echo '<div class="post">';
+		    	edit_post_link(__('Edit'),'<div class="homepageEdit">','</div>');
 		    	$subject = get_post_meta(get_the_ID(), 'MM_homepageSetup_subject', TRUE);
+		    	echo '<div class="subject">';
 		    	if($subject != '') {
 		    		echo $subject;
 		    	} else {
@@ -413,6 +415,7 @@ include('includes/homepageSetup.php');
 		    			}
 					}
 		    	}
+		    	echo '</div>';
 				echo '<h3><a href="' . get_permalink() . '" rel="bookmark" class="title">' . get_the_title() . '</a></h3>';
 				echo '<h4>By ' . get_the_author() . '</h4>';
 				if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) {
