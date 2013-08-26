@@ -4,6 +4,8 @@ Description: A Child Theme of the PRiNZ BranfordMagazie Pro theme
 Template: PRiNZ_BranfordMagazine_pro/branfordmagazine-pro
 */
 
+@import url(http://fonts.googleapis.com/css?family=Oswald);
+
 body {
 	/*background-color: #0e1c52;*/
 	background-color: #95a9ca;
@@ -242,12 +244,12 @@ div#footer, div#footer a {
 
 div.MM_connect {
     position: relative;
-    top: 20px;
+    top: 10px;
 }
 
 div.MM_connect a {
     color: #3E557D;
-    font-family: tahoma;
+    font-family: 'Oswald', sans-serif;
     font-size: 1.2em;
     font-weight: bold;
     margin: 10px;
