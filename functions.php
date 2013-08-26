@@ -134,7 +134,7 @@ class MM_ConnectWidget extends WP_Widget {
 	/** @see WP_Widget::widget */
 	function widget( $args, $instance ) {
 		?>
-			<div class="MM_connect"><a href="http://mines.edu">Mines.edu</a><a href="http://giving.mines.edu">CSM Foundation</a><a href="http://minesnewsroom.com">Newsroom</a></div>
+			<div class="MM_connect"><a href="http://mines.edu">Mines.edu</a><a href="http://minesalumni.com">MinesAlumni.com</a></div>
 		<?php
 	}
 

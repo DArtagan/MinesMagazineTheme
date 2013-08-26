@@ -143,8 +143,12 @@ div.post h4 {
 #sidelist .children li a, #sidelist .children li a:visited {
     border: 0 none;
     color: #000000;
-    text-indent: 15px;
 }
+
+#sidelist ul.children {
+	margin-left: 15px;
+}
+
 
 li.cat-item:last-child {
     padding-bottom: 3px;
@@ -164,11 +168,13 @@ div.homepageEdit, div.homepageEdit a {
 	text-decoration: none;
 }
 
-div#issueDate {
-	margin: 0px 0px 20px;
+div#issueTitle {
+	background: #ffffff;
+	margin: 0px;
+	padding: 0px 0px 15px;
 }
 
-div#issueDate h1 {
+div#issueTitle h1 {
 	color: #840000;
 	font-size: 2.5em;
 	text-align: center;
