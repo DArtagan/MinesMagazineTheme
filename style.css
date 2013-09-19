@@ -83,8 +83,8 @@ div#content img {
 
 div.column {
 	float: left;
-	margin: 0px 10px;
-	width: 300px;
+	margin: 0px 5px;
+	width: 310px;
 }
 
 div#twocol {
@@ -93,7 +93,7 @@ div#twocol {
 }
 
 div#feature {
-	width: 620px;
+	width: 630px;
 }
 
 div#rightcolumn {
@@ -102,7 +102,7 @@ div#rightcolumn {
 
 div.post {
 	background: #ffffff;
-	margin: 0px 0px 15px;
+	margin: 0px 0px 10px;
 	overflow: auto;
 	padding: 12px;
 	vertical-align: top;
