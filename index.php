@@ -26,9 +26,6 @@
   </div>
 
   <div id="rightcolumn" class="column">
-    <div id="issueTitle">
-      <h1><?php echo MM_currentIssue() ?></h1>
-    </div>
     <?php get_sidebar(); ?>
     <?php MM_homepageBox(MM_homepageQuery( 'right' )); ?>
   </div>
