@@ -49,7 +49,7 @@ div.prinz-menu-primary li {
 }
 
 div.prinz-menu-primary li.current-menu-item {
-	background-color: #840000;
+	background-color: #AB3B22;
 }
 
 .prinz-menu-primary li li a {
@@ -124,7 +124,7 @@ div.post h4 {
 }
 
 .title:link, .title:active, .title:visited {
-	color: #840000;
+	color: #AB3B22;
 }
 
 .subnav li a:link, .subnav li a:visited {
@@ -170,27 +170,17 @@ div.homepageEdit, div.homepageEdit a {
 	text-decoration: none;
 }
 
-div#issueTitle {
-	background: #ffffff;
-	margin: 0px;
-	padding: 0px 0px 15px;
-}
-
-div#issueTitle h1 {
-	color: #840000;
-	font-size: 2.5em;
-	text-align: center;
-}
-
 div#sidebar {
-	background: #ffffff;
 	float: none;
-	margin-bottom: 30px;
+	margin: -10px 0px 0px;
+	padding: 0px;
 	width: 100%;
 }
 
 div.sidebar_widget {
-	padding: 0px 12px 20px;
+	background: #ffffff;
+	margin: 10px 0px;
+	padding: 12px;
 }
 
 div#sidebar h3 {
@@ -248,8 +238,8 @@ div.MM_connect {
 }
 
 div.MM_connect a {
-    color: #3E557D;
-    font-family: 'Oswald', sans-serif;
+    color: #AB3B22;
+    font-family: 'Open-Sans', sans-serif;
     font-size: 1.2em;
     font-weight: bold;
     margin: 10px;
