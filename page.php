@@ -1,7 +1,7 @@
 <?php get_header(); ?>
 
 <div id="content" class="clearfloat">
-  <div id="articleColumn">
+  <div id="articleColumn" class="column">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <div class="post" id="post-<?php the_ID(); ?>">
       <h2>

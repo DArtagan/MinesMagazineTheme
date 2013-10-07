@@ -3,7 +3,7 @@
 	prinz_ignorePost($post->ID); ?>
 
 <div id="content" class="clearfloat">
-  <div id="articleColumn">
+  <div id="articleColumn" class="column">
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
       <h2><?php the_title(); ?></h2>
