@@ -3,7 +3,7 @@
 
 <div id="content" class="clearfloat">
 
-  <div id="twocol">
+  <div id="twoColumn">
     <div id="feature" class="column">
       <?php MM_homepageBox(MM_homepageQuery( 'feature' )); ?>
     </div>
@@ -16,16 +16,16 @@
       ?>
     </div>
 
-    <div id="leftcolumn" class="column">
+    <div id="leftColumn" class="column">
       <?php MM_homepageBox(MM_homepageQuery( 'left' )); ?>
     </div>
 
-    <div id="centercolumn" class="column">
+    <div id="centerColumn" class="column">
       <?php MM_homepageBox(MM_homepageQuery( 'center' )); ?>
     </div>
   </div>
 
-  <div id="rightcolumn" class="column">
+  <div id="rightColumn" class="column">
     <?php get_sidebar(); ?>
     <?php MM_homepageBox(MM_homepageQuery( 'right' )); ?>
   </div>

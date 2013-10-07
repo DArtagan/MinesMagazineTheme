@@ -87,7 +87,12 @@ div.column {
 	width: 310px;
 }
 
-div#twocol {
+div#twoColumn {
+	float: left;
+	width: 640px;
+}
+
+div#articleColumn {
 	float: left;
 	width: 640px;
 }
@@ -96,7 +101,7 @@ div#feature {
 	width: 630px;
 }
 
-div#rightcolumn {
+div#rightColumn {
 	float: right;
 }
 
