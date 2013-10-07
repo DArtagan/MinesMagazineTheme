@@ -74,6 +74,20 @@ myUsers::init();
 
 
 /**
+ * Append the issue name to the wp-nav menu
+ */
+ 
+add_filter('wp_nav_menu_items', 'issueNameInNav', 10, 2);
+ 
+function issueNameInNav($items, $args) {
+	$args->theme_location == 'prinz-menu-primary';
+    $issueTitle = '<li class="navIssueTitle"><a href="http://beta.minesmagazine.com/">' . MM_currentIssue() .'</a></li>';
+    $newitems = $issueTitle . $items;
+    return $newitems;
+}
+
+
+/**
  * widget_wp_flash_img_show Class
  */
 class widget_wp_flash_img_show extends WP_Widget {
@@ -317,7 +331,7 @@ add_action('template_redirect', 'IssuesTemplate', 1);*/
 	}
 
 /**
- * Get name of most recent issue
+ * Get ID of most recent issue
  */
 	function MM_currentIssueID()  {
 		$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
