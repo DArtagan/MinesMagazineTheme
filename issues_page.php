@@ -13,7 +13,7 @@ Template Name: Recent Issues
       <h2>
         <?php the_title(); ?>
       </h2>
-      <div id="nav_inset">
+      <div>
         <ul>
           <li><a href="#WebIssues">Issues on the Web</a></li>
           <li><a href="#PDFarchive">PDF Archive</a></li>
@@ -53,5 +53,4 @@ Template Name: Recent Issues
     <?php get_sidebar(); ?>
   </div>
 </div>
-<?php get_sidebar(); ?>
 <?php get_footer(); ?>

@@ -12,6 +12,14 @@ body {
 	/*background-color: #e5e8f1;*/
 }
 
+h2 {
+	line-height: 1.4em;
+}
+
+h3 {
+	line-height: 1.3em;
+}
+
 a:link, a:active, a:visited {
 	color: #AB3B22;
 	text-decoration: none;
