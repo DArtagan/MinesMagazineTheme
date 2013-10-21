@@ -80,9 +80,24 @@ myUsers::init();
 add_filter('wp_nav_menu_items', 'issueNameInNav', 10, 2);
  
 function issueNameInNav($items, $args) {
-	$args = array();
-	get_categories($args);
-    $issueTitle = '<li class="navIssueTitle"><a href="http://beta.minesmagazine.com/">' . MM_currentIssue() .'</a></li>';
+	//$args = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
+	//get_categories($args);
+	if (is_category()) {
+		$category = get_category( get_query_var( 'cat' ) );
+		$cat_name = $category->name;
+	} else if (is_single()) {
+		$categories = get_the_category();
+		$cat_name = MM_currentIssue();
+		foreach ($categories as $category) {
+			if (get_category($category->cat_ID)->category_parent == 408) {
+				$cat_name = $category->name;
+			}
+		}
+	} else {
+		$cat_name = MM_currentIssue();
+	}
+    
+    $issueTitle = '<li class="navIssueTitle"><a href="http://beta.minesmagazine.com/">' . $cat_name .'</a></li>';
     $newitems = $issueTitle . $items;
     return $newitems;
 }
