@@ -7,6 +7,7 @@
     <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
     <div id="post-<?php the_ID(); ?>" <?php post_class(); ?>>
       <h2><?php the_title(); ?></h2>
+      <div class="socialTop"><?php echo sharing_display(); ?></div>
       <small>
       <?php the_time(__('M jS, Y', PRiNZ_DOMAIN)); ?>
       |
@@ -22,7 +23,10 @@
         <?php dynamic_sidebar( 'abovepost' ); ?>
         <?php else : ?>
         <?php endif; ?>
+        <?php remove_filter( 'the_content', 'sharing_display', 19 ); ?>
+        <?php remove_filter( 'the_excerpt', 'sharing_display', 19 ); ?>
         <?php the_content(); ?>
+        <div class="socialBottom"><?php echo sharing_display(); ?></div>
         <?php if ( is_active_sidebar( 'belowpost' ) ) :  // Widgetized area below post content ?>
         <?php dynamic_sidebar( 'belowpost' ); ?>
         <?php else : ?>

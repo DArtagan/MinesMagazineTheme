@@ -75,7 +75,7 @@ div.prinz-menu-primary li:hover {
 	background: #888888;
 }
 
-ul#primary li.menu-item:first-child {
+ul#primary>li.menu-item:first-child {
 	border-left: 1px solid #ffffff;
 }
 
@@ -309,6 +309,30 @@ ul.search_results div.search_footer {
 	padding-top: 5px;
 }
 
+.sd-content {
+	float: none !important;
+	width: 100% !important;
+}
+
+.sd-button, .sd-button span {
+	-moz-box-sizing: content-box;
+	-webkit-box-sizing: content-box;
+	box-sizing: content-box;
+}
+
+div.socialTop div.sd-block {
+	padding: 0;
+	margin: 0;
+}
+
+div.socialTop {
+	float: right;
+}
+
+div.socialTop div.sd-block {
+	border: none;
+}
+
 div#sidelist a.sam_ad img {
 	border: 0px;
 }
@@ -336,4 +360,34 @@ body.search-results div#content {
 
 body.search-results div#content div#adBlock {
 	background: #dddddd;
+}
+
+div#nav_inset {
+    background: none repeat scroll 0 0 #661717;
+    float: right;
+    margin: 15px;
+    padding: 7px;
+}
+
+div#nav_inset li {
+    list-style: none outside none;
+    margin: 0;
+    padding: 1px;
+}
+
+div#nav_inset a {
+    color: #FFFFFF;
+    display: inline-block;
+    font-weight: bold;
+    padding: 3px;
+    text-decoration: none;
+}
+
+div#nav_inset img.icon {
+    border: 0 none;
+    height: 20px;
+    padding-right: 7px;
+    margin: -1px;
+    vertical-align: middle;
+    width: 23px;
 }
