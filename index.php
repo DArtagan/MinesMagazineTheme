@@ -5,7 +5,7 @@
 
   <div id="twoColumn">
     <div id="feature" class="column">
-      <?php MM_homepageBox(MM_homepageQuery( 'feature' )); ?>
+      <?php MM_homepageBox(MM_homepageStyleQuery( MM_currentIssueID(), 'feature' )); ?>
     </div>
 
     <div>
@@ -17,17 +17,17 @@
     </div>
 
     <div id="leftColumn" class="column">
-      <?php MM_homepageBox(MM_homepageQuery( 'left' )); ?>
+      <?php MM_homepageBox(MM_homepageStyleQuery( MM_currentIssueID(), 'left' )); ?>
     </div>
 
     <div id="centerColumn" class="column">
-      <?php MM_homepageBox(MM_homepageQuery( 'center' )); ?>
+      <?php MM_homepageBox(MM_homepageStyleQuery( MM_currentIssueID(), 'center' )); ?>
     </div>
   </div>
 
   <div id="rightColumn" class="column">
     <?php get_sidebar(); ?>
-    <?php MM_homepageBox(MM_homepageQuery( 'right' )); ?>
+    <?php MM_homepageBox(MM_homepageStyleQuery( MM_currentIssueID(), 'right' )); ?>
   </div>
 
 </div>

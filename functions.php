@@ -420,7 +420,7 @@ include('includes/homepageSetup.php');
 /**
  * Query for homepage articles, for a given column
  */
-	function MM_homepageQuery( $column ) {
+	function MM_homepageStyleQuery( $issue, $column ) {
 		$args = array( 
         'posts_per_page' => '-1',
         'orderby' => 'meta_value_num',
@@ -430,7 +430,7 @@ include('includes/homepageSetup.php');
           array(
             'taxonomy' => 'category',
             'field' => 'id',
-            'terms' => array( MM_currentIssueID() ),
+            'terms' => array( $issue ),
             'operator' => 'AND',
           )
         ),

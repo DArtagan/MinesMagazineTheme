@@ -29,7 +29,7 @@ Template Name: Recent Issues
           $issues=  get_categories($arg);
           foreach($issues as $issue) {
             $thePost = get_posts(array('category__and' => array($issue->term_id, 200)));
-            echo '<li><a href="http://minesmagazine.com/?cat=' . $issue->cat_ID . '">' . get_the_post_thumbnail($thePost[0]->ID, 'cover-thumbnail') . '<p>' . $issue->cat_name . '</p></a></li>'; 
+            echo '<li><a href="' . get_site_url() . '?cat=' . $issue->cat_ID . '">' . get_the_post_thumbnail($thePost[0]->ID, 'cover-thumbnail') . '<p>' . $issue->cat_name . '</p></a></li>'; 
           }
           // Load XML file of external mines magazines
           if (file_exists(STYLESHEETPATH."/archives.xml")) {
