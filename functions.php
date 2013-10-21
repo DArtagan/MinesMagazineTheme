@@ -47,7 +47,7 @@ add_action('wp_head', 'childtheme_activate_stylesheet', 99);
 	add_image_size('fullwidth' , $MM_fullwidthWidth, $MM_fullwidthHeight, TRUE );
 	add_image_size('square', $MM_squareWidth, $MM_squareHeight, TRUE );
 	add_image_size('feature', $MM_featureWidth, $MM_featureHeight, TRUE );
-
+	add_image_size('cover-thumbnail', 100, 127, TRUE);
 
 /**
  * Display users as firstname lastname
@@ -80,7 +80,8 @@ myUsers::init();
 add_filter('wp_nav_menu_items', 'issueNameInNav', 10, 2);
  
 function issueNameInNav($items, $args) {
-	$args->theme_location == 'prinz-menu-primary';
+	$args = array();
+	get_categories($args);
     $issueTitle = '<li class="navIssueTitle"><a href="http://beta.minesmagazine.com/">' . MM_currentIssue() .'</a></li>';
     $newitems = $issueTitle . $items;
     return $newitems;
@@ -197,7 +198,7 @@ class RecentIssuesWidget extends WP_Widget {
 		echo $before_widget;
 		if ( $title )
 			echo $before_title . $title . $after_title;
-		$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
+		$arg = array('child_of'=>$issuesID, 'orderby'=>'id', 'order'=>'desc');
 		$issues=  get_categories($arg);
 		echo $after_widget;?>
 		<ul class="subnav"><?php
@@ -303,22 +304,6 @@ class limited_catagories_list_widget extends WP_Widget {
  
 }
 add_action( 'widgets_init', create_function( '', 'return register_widget("limited_catagories_list_widget");' ) );
-
-/**
- * Custom template if the category belongs to the issues parent category
- */
-	/*function IssuesTemplate()  {
-		$parent = get_query_var('cat');
-		while ($parent) {
-			if ($parent == 408) {
-				include('category-408.php');
-				exit;
-			}
-			$cat = get_category($parent);
-			$parent = $cat->category_parent;
-		}
-	}
-add_action('template_redirect', 'IssuesTemplate', 1);*/
 
 
 /**

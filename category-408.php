@@ -1,4 +1,3 @@
-<?php get_header(); ?>
 <?php
 global $childoptions;
 foreach ($childoptions as $value) {
@@ -6,6 +5,9 @@ foreach ($childoptions as $value) {
     else { $$value['id'] = get_option( $value['id'] ); }
     }
 ?>
+
+<?php get_header(); ?>
+
 
 <div id="content">
 	<?php

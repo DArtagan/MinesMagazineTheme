@@ -3,64 +3,55 @@
 Template Name: Recent Issues
 */
 ?>
+
 <?php get_header(); ?>
 
-	<div id="content">
-		<?php if (have_posts()) : while (have_posts()) : the_post(); ?>
-		<div class="post" id="post-<?php the_ID(); ?>">
-			<h2><?php the_title(); ?></h2>
-		
+<div id="content" class="clearfloat">
+  <div id="articleColumn" class="column">
+    <?php if (have_posts()) : while (have_posts()) : the_post(); ?>
+    <div class="post" id="post-<?php the_ID(); ?>">
+      <h2>
+        <?php the_title(); ?>
+      </h2>
       <div id="nav_inset">
         <ul>
+          <li><a href="#WebIssues">Issues on the Web</a></li>
           <li><a href="#PDFarchive">PDF Archive</a></li>
           <li><a href="#100YearArchive">100 Year Archive</a></li>
         </ul>
       </div>
-    
-			<div class="issue-images">
-				<p style="padding-bottom: 5px;">Issues from the new website:</p>
-				<ul>
-				<?php 
-					$arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
-					$issues=  get_categories($arg);
-                                        $issueCount = 0;
-					foreach($issues as $issue) {
+      <div id="issueTiles">
+        <a name="WebIssues"></a>
+        <h3 style="padding-bottom: 5px;">Issues on the Web</h3>
+        <ul>
+        <?php 
+          $arg = array('child_of'=>408, 'orderby'=>'id', 'order'=>'desc');
+          $issues=  get_categories($arg);
+          foreach($issues as $issue) {
             $thePost = get_posts(array('category__and' => array($issue->term_id, 200)));
-            $issueCount++;
-            //var_dump($issue);
-            //$leadPost = query_posts(array('category__and' => array($issue->term_id,200)));
-            //$issueImage = get_the_post_thumbnail( $post_id, 'thumbnail', $attr );
-                                                if($issueCount == 5) echo '<li style="height: 163px; width: 100px;">&nbsp;</li>';
-						echo '<li><a href="http://minesmagazine.com/?cat=' . $issue->cat_ID . '">' . get_the_post_thumbnail($thePost[0]->ID) . '<div>' . $issue->cat_name . '</div></a></li>'; 
-					} 
-				?>
-        <?php
-        // Load XML file of external mines magazines
+            echo '<li><a href="http://minesmagazine.com/?cat=' . $issue->cat_ID . '">' . get_the_post_thumbnail($thePost[0]->ID, 'cover-thumbnail') . '<p>' . $issue->cat_name . '</p></a></li>'; 
+          }
+          // Load XML file of external mines magazines
           if (file_exists(STYLESHEETPATH."/archives.xml")) {
             $xml = simplexml_load_file(STYLESHEETPATH."/archives.xml");
-           
             foreach ($xml->issue as $issue) {
-              echo '<li><a href="' . $issue->link . '"><img alt="' . $issue->img_alt . '" src="' . $issue->img_src . '"><div>' . $issue->name . '</div></a></li>'; 
+              echo '<li><a href="' . $issue->link . '"><img alt="' . $issue->img_alt . '" src="' . $issue->img_src . '"><p>' . $issue->name . '</p></a></li>'; 
             }
           }
         ?>
-				</ul>
-			</div>
-			
-			<div style="clear: both"></div>
-			
-			<div class="entry">
-					 <?php the_content("<p class=\"serif\">" . __('Read the rest of this page', 'branfordmagazine') ." &raquo;</p>"); ?>
-
-					<?php wp_link_pages("<p><strong>" . __('Pages', 'branfordmagazine') . ":</strong>", '</p>', __('number','branfordmagazine')); ?>
-
-			</div>
-		</div>
-		<?php endwhile; endif; ?>
-	<?php edit_post_link('Edit', '<p>', '</p>'); ?>
-
-	</div>
-
+        </ul>
+      </div>
+      <div class="entry">
+        <?php the_content("<p class=\"serif\">" . __('Read the rest of this page',  PRiNZ_DOMAIN) ." &raquo;</p>"); ?>
+        <?php wp_link_pages("<p><strong>" . __('Pages',  PRiNZ_DOMAIN) . ":</strong>", '</p>', __('number', PRiNZ_DOMAIN)); ?>
+      </div>
+    </div>
+    <?php endwhile; endif; ?>
+    <?php edit_post_link('Edit', '<p>', '</p>'); ?>
+  </div>
+  <div id="rightcolumn" class="column">
+    <?php get_sidebar(); ?>
+  </div>
+</div>
 <?php get_sidebar(); ?>
-
 <?php get_footer(); ?>
