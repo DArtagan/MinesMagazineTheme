@@ -272,7 +272,7 @@ div#footer, div#footer a {
 	color: #ffffff;
 }
 
-div.MM_connect {
+div#headerwidgets {
     position: relative;
     top: 10px;
 }
@@ -293,28 +293,12 @@ div.MM_connect a {
 	text-decoration: underline;
 }
 
+#headerwidgets #searchform {
+	padding: 30px 0 15px;
+}
+
 img#search_results_activity_indicator {
 	border: none;
-}
-
-ul.search_results {
-	position: absolute;
-	background: #ffffff;
-	border: 2px solid #666666;
-	padding: 10px;
-	width: 350px;
-}
-
-ul.search_results li {
-	text-indent: -20px;
-	padding-left: 20px;
-	padding-bottom: 2px;
-}
-
-ul.search_results div.search_footer {
-	margin-top: 10px;
-	border-top: 1px solid #999999;
-	padding-top: 5px;
 }
 
 .sd-content {
@@ -361,14 +345,6 @@ span.read-on {
 	display: none;
 }
 
-body.search-results div#content {
-	width: 70%;
-	margin: 15px 15%;
-}
-
-body.search-results div#content div#adBlock {
-	background: #dddddd;
-}
 
 div#nav_inset {
     background: none repeat scroll 0 0 #661717;
