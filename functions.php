@@ -520,4 +520,104 @@ include('includes/homepageSetup.php');
 	}
 	 
 	add_filter( 'category_template', 'new_subcategory_hierarchy' );
+
+/**
+ * Custom bulk and quick edits
+ * Guide by: Rachel Carden
+ * http://wpdreamer.com/2012/03/manage-wordpress-posts-using-bulk-edit-and-quick-edit/
+ */
+	add_filter( 'manage_posts_columns', 'MM_managing_placement_column', 10, 2 );
+	function MM_managing_placement_column( $columns, $post_type ) {
+		$new_columns = array();
+		foreach( $columns as $key => $value ) {
+			$new_columns[ $key ] = $value;
+			if ( $key == 'categories' ) {
+				$new_columns[ 'MM_column' ] = 'Col';
+				$new_columns[ 'MM_rank' ] = 'Rank';
+			}
+		}
+		return $new_columns;
+	}
+
+	add_action( 'manage_posts_custom_column', 'MM_populating_placement_column', 10, 2 );
+	function MM_populating_placement_column( $column_name, $post_id ) {
+	    switch( $column_name ) {
+			case 'MM_column':
+				echo '<div id="MM_column-' . $post_id . '">' . get_post_meta( $post_id, 'MM_homepageSetup_column', true ) . '</div>';
+				break;
+			case 'MM_rank':
+				echo '<div id="MM_rank-' . $post_id . '">' . get_post_meta( $post_id, 'MM_homepageSetup_rank', true ) . '</div>';
+				break;
+	    }
+	}
+
+	add_action( 'bulk_edit_custom_box', 'MM_add_to_bulk_quick_edit_custom_box', 10, 2 );
+	add_action( 'quick_edit_custom_box', 'MM_add_to_bulk_quick_edit_custom_box', 10, 2 );
+	function MM_add_to_bulk_quick_edit_custom_box( $column_name, $post_type ) {
+		switch( $column_name ) {
+			case 'MM_column':
+				?><fieldset class="inline-edit-col">
+					<div class="inline-edit-group">
+                        <span class="title">Column:</span>
+                        <input type="text" name="MM_homepageSetup_column" size="15" value="" />
+	                </div>
+	            </fieldset><?php
+	            break;
+			case 'MM_rank':
+				?><fieldset class="inline-edit-col">
+	                <div class="inline-edit-group">
+                        <span class="title">Rank:</span>
+                        <input type="text" name="MM_homepageSetup_rank" size="5" value="" />
+	                </div>
+	            </fieldset><?php
+	            break;
+		}
+	}
+		/*<select name="MM_homepageSetup_column" value="">
+        	<option value="left">Left</option>
+        	<option value="center">Center</option>
+        	<option value="right">Right</option>
+        	<option value="feature">Feature</option>
+        </select>*/
+
+	add_action( 'admin_print_scripts-edit.php', 'MM_enqueue_edit_scripts' );
+	function MM_enqueue_edit_scripts() {
+		wp_enqueue_script( 'MM-admin-edit', get_bloginfo( 'stylesheet_directory' ) . '/includes/quick_edit.js', array( 'jquery', 'inline-edit-post' ), '', true );
+	}
+
+	add_action( 'save_post','MM_save_post', 10, 2 );
+	function MM_save_post( $post_id, $post ) {
+
+	   // don't save for autosave
+	  	if ( defined( 'DOING_AUTOSAVE' ) && DOING_AUTOSAVE )
+	   		return $post_id;
+
+		// dont save for revisions
+		if ( isset( $post->post_type ) && $post->post_type == 'revision' )
+			return $post_id;
+
+		// placement
+		// Because this action is run in several places, checking for the array key keeps WordPress from editing
+		// data that wasn't in the form, i.e. if you had this post meta on your "Quick Edit" but didn't have it
+		// on the "Edit Post" screen.
+		if ( array_key_exists( 'MM_homepageSetup_column', $_POST ) )
+		    update_post_meta( $post_id, 'MM_homepageSetup_column', $_POST[ 'MM_homepageSetup_column' ] );
+		if ( array_key_exists( 'MM_homepageSetup_rank', $_POST ) )
+		    update_post_meta( $post_id, 'MM_homepageSetup_rank', $_POST[ 'MM_homepageSetup_rank' ] );
+	}
+
+	add_action( 'wp_ajax_MM_save_bulk_edit', 'MM_save_bulk_edit' );
+	function MM_save_bulk_edit() {
+	   // get our variables
+	   $post_ids = ( isset( $_POST[ 'post_ids' ] ) && !empty( $_POST[ 'post_ids' ] ) ) ? $_POST[ 'post_ids' ] : array();
+	   $MM_homepageSetup_column = ( isset( $_POST[ 'MM_homepageSetup_column' ] ) && !empty( $_POST[ 'MM_homepageSetup_column' ] ) ) ? $_POST[ 'MM_homepageSetup_column' ] : NULL;
+	   $MM_homepageSetup_rank = ( isset( $_POST[ 'MM_homepageSetup_rank' ] ) && !empty( $_POST[ 'MM_homepageSetup_rank' ] ) ) ? $_POST[ 'MM_homepageSetup_rank' ] : NULL;
+	   // if everything is in order
+	   if ( !empty( $post_ids ) && is_array( $post_ids ) && !empty( $MM_homepageSetup_column ) && !empty( $MM_homepageSetup_rank ) ) {
+	      foreach( $post_ids as $post_id ) {
+	         update_post_meta( $post_id, 'MM_homepageSetup_column', $MM_homepageSetup_column );
+	         update_post_meta( $post_id, 'MM_homepageSetup_rank', $MM_homepageSetup_rank );
+	      }
+	   }
+	}
 ?>
