@@ -5,9 +5,7 @@
     <?php is_tag(); ?>
     <?php if (have_posts()) : ?>
     <?php $post = $posts[0]; // Hack. Set $post so that the_date() works. ?>
-    <?php /* If this is a category archive */ if (is_category()) { ?>
-    <h2 class="pagetitle"><?php printf( __('%s', PRiNZ_DOMAIN), single_cat_title('', false)); ?></h2>
-    <?php /* If this is a tag archive */ } elseif( is_tag() ) { ?>
+    <?php if( is_tag() ) { ?>
     <h2 class="pagetitle">
       <?php _e('Posts Tagged', PRiNZ_DOMAIN); ?>
       &#8216;

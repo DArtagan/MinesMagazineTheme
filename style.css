@@ -1,7 +1,9 @@
 /*
-Theme Name: Custom Branford Implementation
-Description: A Child Theme of the PRiNZ BranfordMagazie Pro theme
-Template: PRiNZ_BranfordMagazine_pro/branfordmagazine-pro
+Theme Name: Mines Magazine
+Description: A Child Theme of the PRiNZ BranfordMagazie Pro theme, 
+	tailored for the Colorado School of Mines Alumni Association
+Author: William Weiskopf
+Template: BranfordMagazine_9.0
 */
 
 @import url(http://fonts.googleapis.com/css?family=Oswald);
@@ -13,11 +15,25 @@ body {
 }
 
 h2 {
+	font-family: 'Open Sans',​Arial,​Verdana,​Sans-Serif;
 	line-height: 1.4em;
+	font-weight: bold;
+}
+
+body.category h2 {
+	border-bottom: none;
+	margin: 0px;
 }
 
 h3 {
 	line-height: 1.3em;
+	font-size: 1.4em;
+}
+
+h3 a {
+	color: #AB3B22 !important;
+	text-decoration: none;
+	font-weight: bold;
 }
 
 a:link, a:active, a:visited {
@@ -36,7 +52,7 @@ div#page {
 }
 
 div#header {
-	padding: 25px 35px;
+	padding: 5px 15px 5px 25px;
 }
 
 div#logo {
@@ -47,6 +63,7 @@ div#headerwidgets {
 	float: right;
 	margin: 0px;
 	position: inherit;
+	width: 235px;
 }
 
 div#navwrap {
@@ -90,7 +107,7 @@ ul#primary>li.menu-item:first-child {
 ul#primary li.navIssueTitle {
 	background: #AB3B22;
 	font-size: 1.3em;
-	padding: 0px 5px 0px 25px;
+	padding: 0px 5px 0px 15px;
 	text-transform: uppercase;
 }
 
@@ -103,7 +120,7 @@ div#content {
 
 div#content img {
 	border: 1px solid #999999;
-	margin: 4px 16px 12px 0px;
+	margin: 4px 10px 5px 0px;
 	padding: 1px;
 }
 
@@ -154,6 +171,10 @@ div.post h4 {
 	font-style: italic;
 }
 
+div.post .entry {
+	padding-bottom: 0px;
+}
+
 .title:link, .title:active, .title:visited {
 	color: #AB3B22;
 }
@@ -189,6 +210,7 @@ li.cat-item:last-child {
 
 div.subject {
 	border-bottom: 1px solid #CCCCCC;
+	font-family: 'Open Sans',​Arial,​Verdana,​Sans-Serif;
     font-size: 1.1em;
     font-weight: bold;
     padding-bottom: 2px;
@@ -211,13 +233,25 @@ div#sidebar {
 div.sidebar_widget {
 	background: #ffffff;
 	margin: 10px 0px;
-	padding: 12px;
+	padding: 10px;
 }
 
 div#sidebar h3 {
-	margin: 0px 0px 12px;
+    margin: 0 0 12px;
+    padding: 1px 0 2px;
 }
 
+#sidebar h3, #sidebar h2 {
+	border-bottom: 1px solid #CCCCCC;
+	border-top: none;
+	font-family: 'Open Sans',​Arial,​Verdana,​Sans-Serif;
+    font-size: 1.1em;
+    font-weight: bold;
+    letter-spacing: 0;
+    padding-bottom: 2px;
+    text-transform: none;
+    width: 100%;
+}
 
 .bigRightSwf object {
     height: 229px !important;
@@ -274,31 +308,47 @@ div#footer, div#footer a {
 
 div#headerwidgets {
     position: relative;
-    top: 10px;
+    top: 19px;
 }
 
-div.MM_connect a {
-    color: #AB3B22;
-    font-family: 'Open-Sans', sans-serif;
-    font-size: 1.2em;
-    font-weight: bold;
-    margin: 10px;
-
-    text-decoration: none;
-    text-transform: uppercase;
-
-}
-
-.MM_connect > a:hover {
-	text-decoration: underline;
+div.prinz-menu-primary li.navConnect {
+	float: right;
+	border-right: 0px;
+	border-left: 1px solid #ffffff;
 }
 
 #headerwidgets #searchform {
+	float: right;
 	padding: 30px 0 15px;
+	width: 173px;
+}
+
+#headerwidgets #searchform input#s {
+	background-position: 3px 0px;
+	font-size: 1em;
+	height: 18px;
+	margin: 0px;
+	padding: 2px 2px 2px 25px;
+	width: 100%;
 }
 
 img#search_results_activity_indicator {
 	border: none;
+}
+
+#gsc-i-id1 {
+	background: url("images/search-16.png") no-repeat scroll 3px 5px #ffffff !important;
+	padding-left: 20px;
+	width: 150px;
+}
+
+#gsc-i-id1:hover, #gsc-i-id1:focus {
+	background: url("images/search-16.png") no-repeat scroll 3px 5px #eeeeee !important;
+    border: 1px solid #999999;
+}
+
+.gsc-clear-button {
+	display: none;
 }
 
 .sd-content {

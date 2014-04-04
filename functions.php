@@ -23,13 +23,7 @@ function childtheme_create_stylesheet() {
     $templatedir = get_bloginfo('template_directory');
     $stylesheetdir = get_bloginfo('stylesheet_directory');
     ?>
-<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $templatedir ?>/style.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $templatedir ?>/styles/custom-style.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $templatedir ?>/style/nav.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $templatedir ?>/style/plugins.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $templatedir ?>/style/print.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $templatedir ?>/style/template-style.css" />
-<link rel="stylesheet" type="text/css" media="screen" href="<?php echo $templatedir ?>/style/ui.tabs.css" />
+      <link rel="stylesheet" type="text/css" media="screen" href="<?php echo $templatedir ?>/style.css" />
     <?php
 }
 add_action('wp_head', 'childtheme_create_stylesheet');
@@ -44,9 +38,9 @@ add_action('wp_head', 'childtheme_activate_stylesheet', 99);
 /**
  * Register image sizes
  */
-	add_image_size('fullwidth' , $MM_fullwidthWidth, $MM_fullwidthHeight, TRUE );
-	add_image_size('square', $MM_squareWidth, $MM_squareHeight, TRUE );
-	add_image_size('feature', $MM_featureWidth, $MM_featureHeight, TRUE );
+	add_image_size('fullwidth' , $MM_fullwidthWidth, $MM_fullwidthHeight, $MM_cropHomepage );
+	add_image_size('square', $MM_squareWidth, $MM_squareHeight, $MM_cropHomepage );
+	add_image_size('feature', $MM_featureWidth, $MM_featureHeight, $MM_cropHomepage );
 	add_image_size('cover-thumbnail', 100, 127, TRUE);
 
 /**
@@ -74,7 +68,7 @@ myUsers::init();
 
 
 /**
- * Append the issue name to the wp-nav menu
+ * Append the issue name to the beginning of wp-nav menu
  */
  
 add_filter('wp_nav_menu_items', 'issueNameInNav', 10, 2);
@@ -91,14 +85,30 @@ function issueNameInNav($items, $args) {
 		foreach ($categories as $category) {
 			if (get_category($category->cat_ID)->category_parent == 408) {
 				$cat_name = $category->name;
+				$cat_id = $category->cat_ID;
 			}
 		}
 	} else {
 		$cat_name = MM_currentIssue();
+		$cat_id = MM_currentIssueID();
 	}
     
-    $issueTitle = '<li class="navIssueTitle"><a href="http://beta.minesmagazine.com/">' . $cat_name .'</a></li>';
+    $issueTitle = '<li class="navIssueTitle"><a href="' . get_category_link($cat_id) . '">' . $cat_name .'</a></li>';
     $newitems = $issueTitle . $items;
+    return $newitems;
+}
+
+/**
+ * Append connect links to the end of the wp-nav menu
+ */ 
+add_filter('wp_nav_menu_items', 'connectInNav', 10, 2);
+function connectInNav($items, $args) {
+
+	$style_dir = get_bloginfo('stylesheet_directory');
+    $connect = '<li class="navConnect"><a href="http://mines.edu">Mines.edu</a></li><li class="navConnect"><a href="http://minesalumni.com">MinesAlumni.com</a></li>';
+    // $connect = $connect . '<li class="navConnect"><a href="http://facebook.com/minesalumni"><img src="' . $style_dir . '/images/facebook20.jpg"></a><a href="http://twitter.com/minesalumni"><img src="' . $style_dir . '/images/twitter20.jpg"></a></li>';
+
+    $newitems = $items . $connect;
     return $newitems;
 }
 
@@ -357,11 +367,11 @@ add_action( 'widgets_init', create_function( '', 'return register_widget("limite
 	function IssuesArchiveLoop($verbose) {
 		if ( have_posts() ) : while ( have_posts() ) : the_post(); ?>
 				<div class="post" style="clear: both;">
-					<h4 id="post-<?php the_ID(); ?>">
+					<h3 id="post-<?php the_ID(); ?>">
 						<a href="<?php the_permalink() ?>" rel="bookmark" title="<?php __('Permanent Link to');?> <?php the_title(); ?>">
 							<?php the_title(); ?>
 						</a>
-					</h4>
+					</h3>
 					<?php if($verbose) { ?>
 						<small>
 							<?php the_time(__('M jS, Y')); ?>
@@ -475,11 +485,19 @@ include('includes/homepageSetup.php');
 					}
 		    	}
 		    	echo '</div>';
-				echo '<h3><a href="' . get_permalink() . '" rel="bookmark" class="title">' . get_the_title() . '</a></h3>';
-				echo '<h4>By ' . get_the_author() . '</h4>';
-				if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) {
-					the_post_thumbnail(get_post_meta(get_the_ID(), 'MM_homepageSetup_imgSize', TRUE));
-				}
+		    	if (get_post_meta(get_the_ID(), 'MM_homepageSetup_column', TRUE) == 'feature') {
+		    		if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) {
+						the_post_thumbnail(get_post_meta(get_the_ID(), 'MM_homepageSetup_imgSize', TRUE));
+					}
+		    		echo '<h3><a href="' . get_permalink() . '" rel="bookmark" class="title">' . get_the_title() . '</a></h3>';
+					echo '<h4>By ' . get_the_author() . '</h4>';
+		    	} else {
+		    		echo '<h3><a href="' . get_permalink() . '" rel="bookmark" class="title">' . get_the_title() . '</a></h3>';
+					echo '<h4>By ' . get_the_author() . '</h4>';
+					if ( function_exists('has_post_thumbnail') && has_post_thumbnail() ) {
+						the_post_thumbnail(get_post_meta(get_the_ID(), 'MM_homepageSetup_imgSize', TRUE));
+					}
+		    	}
 				the_excerpt();
 		    echo '</div>';
     	endwhile;

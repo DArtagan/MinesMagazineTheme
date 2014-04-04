@@ -25,6 +25,9 @@
          var $MM_homepageSetup_column = $( '#MM_column-' + $post_id ).text();
          var $MM_homepageSetup_rank = $( '#MM_rank-' + $post_id ).text();
 
+         document.write($edit_row);
+         document.write($MM_homepageSetup_column);
+
          // populate the custom quick edit fields
          $edit_row.find( 'input[name="MM_homepageSetup_column"]' ).val( $MM_homepageSetup_column );
          $edit_row.find( 'input[name="MM_homepageSetup_rank"]' ).val( $MM_homepageSetup_rank );

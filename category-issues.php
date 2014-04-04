@@ -85,7 +85,7 @@
             }
           } ?>
         </div>
-        <div id="rightcolumn" class="column">
+        <div id="rightcolumn" class="column" style="margin-top: 38px">
           <?php get_sidebar(); ?>
         </div><?php
       }

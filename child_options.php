@@ -51,6 +51,11 @@ $childoptions = array (
             "type" => "text",
             "std" => __("") ),
 
+    array ( "name" => "Crop Homepage Pictures",
+            "id" => $childshortname . "_cropHomepage",
+            "type" => "checkbox",
+            "std" => "false"),
+
     array( "type" => "close"),
     array ( "type" => "open"),
 
@@ -153,6 +158,23 @@ case 'text':
 
 <?php
 break;
+
+case "checkbox":
+?>
+    <tr>
+    <td width="20%" rowspan="2" valign="middle"><strong><?php echo $value['name']; ?></strong></td>
+        <td width="80%"><? if(get_settings($value['id'])){ $checked = "checked=\"checked\""; }else{ $checked = ""; } ?>
+                <input type="checkbox" name="<?php echo $value['id']; ?>" id="<?php echo $value['id']; ?>" value="true" <?php echo $checked; ?> />
+                </td>
+    </tr>
+
+    <tr>
+        <td><small><?php echo $value['desc']; ?></small></td>
+   </tr><tr><td colspan="2" style="margin-bottom:5px;border-bottom:1px dotted #000000;">&nbsp;</td></tr><tr><td colspan="2">&nbsp;</td></tr>
+
+<?php         
+break;
+
 }
 }
 ?>
