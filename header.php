@@ -38,10 +38,6 @@ echo '</title>';
 ?>
 
 <link rel="stylesheet" type="text/css" media="screen" href="<?php bloginfo('stylesheet_url'); ?>" />
-	<?php if (!prinz_get_option('prinz_color_scheme')) : // in case no stylesheet is defined (e.g. in preview mode) make sure the default is loaded ?>
-  <?php else: ?>
-<link rel="stylesheet" type="text/css" media="screen" href="<?php echo get_stylesheet_directory_uri(); ?>/styles/style_<?php echo prinz_get_option('prinz_color_scheme'); ?>.css" />
-	<?php endif; ?>
 <?php if (prinz_get_option('prinz_responsive')) : // Call the mediaqueries CSS if the theme is set to be responsive in the themes options ?>
 <link rel="stylesheet" type="text/css" media="screen" href="<?php echo get_stylesheet_directory_uri() ; ?>/styles/mediaqueries.css" />
 <?php endif; ?>
